@@ -82,20 +82,14 @@ public class HazardManager : MonoBehaviour
 
     private void displayTimer()
     {
-        float timerCountdown = totalTimeInSec - Time.time;
+        //float timerCountdown = totalTimeInSec - Time.time;
 
-        if (timerCountdown <= 0)
-        {
-            timerCountdown = 0.00f;
-            timerText.color = Color.red;
-        }
-
-        if (timerCountdown < 60)
-            timerText.text = System.Math.Round(timerCountdown, 2).ToString();
+        if (Time.time < 60)
+            timerText.text = System.Math.Round(Time.time, 2).ToString();
         else
         {
-            int minutes = (int)timerCountdown / 60;
-            int seconds = (int)timerCountdown % 60;
+            int minutes = (int)Time.time / 60;
+            int seconds = (int)Time.time % 60;
 
             if (seconds < 10)
                 timerText.text = minutes + " : 0" + seconds;

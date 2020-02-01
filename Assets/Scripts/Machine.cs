@@ -48,7 +48,7 @@ public class Machine : Selectable
 
     public void Break()
     {
-        _actionType = PossibleActions[Random.Range(5, 6)];
+        _actionType = PossibleActions[Random.Range(0, 6)];
         _repairLevel = 0f;
         IsWorking = false;
     }
@@ -77,6 +77,7 @@ public class Machine : Selectable
     {
         
     }
+
     public override bool ReceiveInput(ActionType type)
     {
         throw new NotImplementedException();

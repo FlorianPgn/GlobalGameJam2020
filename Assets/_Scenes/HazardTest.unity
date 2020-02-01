@@ -262,8 +262,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxSpeed: 4
-  MaxAcceleration: 10
-  TurnSpeed: 4
+  PlayerModel: {fileID: 0}
 --- !u!54 &54318000
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -292,8 +291,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c6a83bef01c19446a1ba6415f5dce8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SelectCollider: {fileID: 589585099}
   SelectedObject: {fileID: 0}
+  RepairStrength: 0.25
+  MaxPower: 10
 --- !u!1 &324468382
 GameObject:
   m_ObjectHideFlags: 0
@@ -633,7 +633,7 @@ MonoBehaviour:
   labHazardLocations: {fileID: 1129095483}
   machineRoomHazardLocations: {fileID: 39179267}
   commandRoomHazardLocations: {fileID: 1446348805}
-  totalTimeInSec: 65
+  totalTimeInSec: 240
   timerText: {fileID: 1817107874}
 --- !u!1 &725634645
 GameObject:
@@ -668,6 +668,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SelectColor: {r: 0.7477496, g: 0.61089355, b: 0.9056604, a: 1}
+  PossibleActions: 
+  IsWorking: 1
+  Difficulty: 1
 --- !u!65 &725634647
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -774,6 +777,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SelectColor: {r: 0.7477496, g: 0.61089355, b: 0.9056604, a: 1}
+  PossibleActions: 
+  IsWorking: 1
+  Difficulty: 1
 --- !u!65 &760865343
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1011,6 +1017,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SelectColor: {r: 0.7477496, g: 0.61089355, b: 0.9056604, a: 1}
+  PossibleActions: 
+  IsWorking: 1
+  Difficulty: 1
 --- !u!65 &1075365340
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1117,6 +1126,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SelectColor: {r: 0.7477496, g: 0.61089355, b: 0.9056604, a: 1}
+  PossibleActions: 
+  IsWorking: 1
+  Difficulty: 1
 --- !u!65 &1102463580
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1353,6 +1365,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SelectColor: {r: 0.7477496, g: 0.61089355, b: 0.9056604, a: 1}
+  PossibleActions: 
+  IsWorking: 1
+  Difficulty: 1
 --- !u!65 &1425953457
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1491,6 +1506,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SelectColor: {r: 0.7477496, g: 0.61089355, b: 0.9056604, a: 1}
+  PossibleActions: 
+  IsWorking: 1
+  Difficulty: 1
 --- !u!65 &1471098579
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1680,6 +1698,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SelectColor: {r: 0.7477496, g: 0.61089355, b: 0.9056604, a: 1}
+  PossibleActions: 
+  IsWorking: 1
+  Difficulty: 1
 --- !u!65 &1732048316
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2032,6 +2053,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SelectColor: {r: 0.7477496, g: 0.61089355, b: 0.9056604, a: 1}
+  PossibleActions: 
+  IsWorking: 1
+  Difficulty: 1
 --- !u!65 &2057336164
 BoxCollider:
   m_ObjectHideFlags: 0
