@@ -107,7 +107,7 @@ public class @InputsController : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""4d7f7eff-f2d0-4ee9-a00c-7b2114d11c02"",
-                    ""path"": ""<Gamepad>/leftStick"",
+                    ""path"": ""<Gamepad>/rightStick"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",

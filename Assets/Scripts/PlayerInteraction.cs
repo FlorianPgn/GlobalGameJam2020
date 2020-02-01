@@ -8,17 +8,17 @@ public class PlayerInteraction : MonoBehaviour
 {
     public Selectable SelectedObject;
 
-    public float RepairStrength = 0.25f;
+    public float RepairStrength = 0.32f;
     public float Power = 10f;
 
     // Update is called once per frame
     void Start()
     {
-        RepairStrength = 0.25f;
+        RepairStrength = 0.32f;
         Power = 10f;
     }
 
-    public void SelectObject(ActionType type)
+    private void SelectObject(ActionType type)
     {
         if (SelectedObject != null)
         {
@@ -47,6 +47,16 @@ public class PlayerInteraction : MonoBehaviour
     public void OnY()
     {
         SelectObject(ActionType.Y);
+    }
+
+    public void OnLS()
+    {
+        SelectObject(ActionType.LS);
+    }
+    
+    public void OnRS()
+    {
+        SelectObject(ActionType.RS);
     }
 
     private void OnTriggerEnter(Collider other)

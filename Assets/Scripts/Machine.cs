@@ -7,43 +7,70 @@ using Random = UnityEngine.Random;
 public class Machine : Selectable
 {
     public Color SelectColor;
-    public ActionType[] PossibleRepairs;
+    public ActionType[] PossibleActions;
 
-    public bool IsWorking => _repairValue == 1f;
+    public bool IsWorking = true;
+    public int Difficulty = 1;
     
     private MeshRenderer _meshRenderer;
     private Color _baseColor;
 
-    private float _repairValue = 1f;
-    private RepairUI _repairUi;
+    private float _repairLevel = 1f;
     private ActionType _actionType;
+    
+    private Vector2 _joystick;
+    private Vector2 _oldJoystick;
+    private bool _sRight;
+    private bool _sLeft;
+    private float _spinCount;
     
     // Start is called before the first frame update
     void Start()
     {
         _meshRenderer = GetComponent<MeshRenderer>();
         _baseColor = _meshRenderer.material.color;
-        _repairUi = GetComponent<RepairUI>();
+        IsWorking = true;
     }
 
     private void Update()
     {
-        _repairUi.RepairValue(_repairValue);
+        
+    }
+
+    public float GetRepairLevel()
+    {
+        return _repairLevel;
+    }
+
+    public ActionType GetActionType()
+    {
+        return _actionType;
     }
 
     public void Break()
     {
-        _actionType = PossibleRepairs[Random.Range(0, PossibleRepairs.Length)];
-        _repairUi.SetRepairAction(_actionType);
-        _repairValue = 0f;
+        _actionType = PossibleActions[Random.Range(0, PossibleActions.Length)];
+        _repairLevel = 0f;
+        IsWorking = false;
     }
 
     private void Repair(float value)
     {
-        _repairValue = Mathf.Clamp01(_repairValue + value);
-        if (IsWorking)
+        _repairLevel = Mathf.Clamp01(_repairLevel + value);
+        if (_repairLevel == 1f)
         {
-            ResetMachine();
+            Difficulty -= 1;
+            if (Difficulty > 0)
+            {
+                Break();
+            }
+            else
+            {
+                if (IsWorking)
+                {
+                    ResetMachine();
+                }
+            }
         }
     }
 
@@ -51,15 +78,14 @@ public class Machine : Selectable
     {
         
     }
-
-
     public override bool ReceiveInput(ActionType type)
     {
         throw new NotImplementedException();
     }
-
+    
     public override bool ReceiveInput(ActionType type, float value)
     {
+        Debug.Log(type + " - " + _repairLevel);
         if (_actionType == type && !IsWorking)
         {
             Repair(value);

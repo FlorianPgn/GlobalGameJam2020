@@ -20,7 +20,6 @@ public class Hazard : MonoBehaviour
     public float RepairPower;
     public int Difficulty = 1;
     
-    public Image RepairBar;
     public Image RepairBarFiller;
     public Image AwaitedInput;
     public Sprite[] SpritesInputs;
@@ -105,9 +104,8 @@ public class Hazard : MonoBehaviour
             Cube.GetComponent<MeshRenderer>().material.color = Color.red;
             GenerateKey();
             Vector3 hazardPosition = Camera.WorldToScreenPoint(transform.position);
-            RepairBar.transform.position = new Vector3(hazardPosition.x, hazardPosition.y + 60, hazardPosition.z);
             RepairBarFiller.transform.position = new Vector3(hazardPosition.x, hazardPosition.y + 60, hazardPosition.z);
-            RepairBar.color = RepairBarFiller.color = new Color(255, 255, 255, 255f);
+            RepairBarFiller.color = new Color(255, 255, 255, 255f);
             RepairBarFiller.fillAmount = 0;
             _isRepairBarShown = true;
         }
@@ -134,7 +132,7 @@ public class Hazard : MonoBehaviour
     {
         _isRepaired = true;
         Cube.GetComponent<MeshRenderer>().material.color = Color.green;
-        AwaitedInput.color = RepairBar.color = RepairBarFiller.color = new Color(0, 0, 0, 0);
+        AwaitedInput.color = RepairBarFiller.color = new Color(0, 0, 0, 0);
         _isRepairBarShown = false;
         Debug.Log("Object Repaired !");
     }
@@ -175,14 +173,14 @@ public class Hazard : MonoBehaviour
         if (_key == "SR")
         {
             //AVOID SPINNING SL
-            if (_oldJoystick.x > 0 && _oldJoystick.y > 0 && _joystick.x > _oldJoystick.x && _joystick.y < _oldJoystick.y && !_sRight)
+            if (_oldJoystick.x > 0.8 && _oldJoystick.y > 0.8 && _joystick.x > _oldJoystick.x && _joystick.y < _oldJoystick.y && !_sRight)
             {
                 _spinCount += 0.5f;
                 _sLeft = false;
                 _sRight = true;
             }
             //AVOID SPINNING SL
-            if (_oldJoystick.x < 0 && _oldJoystick.y < 0 && _joystick.x < _oldJoystick.x && _joystick.y > _oldJoystick.y)
+            if (_oldJoystick.x < -0.8 && _oldJoystick.y < -0.8 && _joystick.x < _oldJoystick.x && _joystick.y > _oldJoystick.y)
             {
                 _spinCount += 0.5f;
                 _sRight = false;

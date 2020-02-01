@@ -350,7 +350,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SelectedObject: {fileID: 0}
-  RepairStrength: 0.25
+  RepairStrength: 0.33333334
   Power: 1
 --- !u!114 &54318002
 MonoBehaviour:
@@ -365,6 +365,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Id: 0
+  Joystick: {x: 0, y: 0}
+  OldJoystick: {x: 0, y: 0}
 --- !u!1 &164439148
 GameObject:
   m_ObjectHideFlags: 0
@@ -948,6 +950,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Id: 1
+  Joystick: {x: 0, y: 0}
+  OldJoystick: {x: 0, y: 0}
 --- !u!114 &968255709
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -961,7 +965,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SelectedObject: {fileID: 0}
-  RepairStrength: 0.25
+  RepairStrength: 0.33333334
   Power: 1
 --- !u!65 &968255710
 BoxCollider:
@@ -1193,6 +1197,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Machine (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8740459668530298453, guid: 73e832789fc4ab14492ce96c0589924e,
+        type: 3}
+      propertyPath: IsWorking
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 73e832789fc4ab14492ce96c0589924e, type: 3}
@@ -3389,6 +3398,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Machine
+      objectReference: {fileID: 0}
+    - target: {fileID: 8740459668530298453, guid: 73e832789fc4ab14492ce96c0589924e,
+        type: 3}
+      propertyPath: IsWorking
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 73e832789fc4ab14492ce96c0589924e, type: 3}

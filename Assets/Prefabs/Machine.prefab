@@ -112,7 +112,7 @@ GameObject:
   - component: {fileID: 3683502259715846507}
   - component: {fileID: 1600091940139705530}
   m_Layer: 5
-  m_Name: FillBg
+  m_Name: RepairBarFiller
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -185,7 +185,7 @@ GameObject:
   - component: {fileID: 9028632447532151726}
   - component: {fileID: 8390958495162688355}
   m_Layer: 5
-  m_Name: Action
+  m_Name: AwaitedInput
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -354,7 +354,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SelectColor: {r: 0.7477496, g: 0.61089355, b: 0.9056604, a: 1}
-  PossibleRepairs: 00000000010000000200000003000000
+  PossibleActions: 000000000100000002000000030000000400000005000000
+  Difficulty: 1
 --- !u!114 &5276286388015387081
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -367,6 +368,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11a42f935123ab147954ab12f0542f48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Machine: {fileID: 8740459668530298453}
   RepairActionSprites:
   - ActionSprite: {fileID: 21300000, guid: 025779f9be4f5c7429ed57b335bb2d6f, type: 3}
     ActionType: 0
@@ -376,5 +378,9 @@ MonoBehaviour:
     ActionType: 2
   - ActionSprite: {fileID: 21300000, guid: 96eb47e995613ca459e7f2a9f693e96b, type: 3}
     ActionType: 3
+  - ActionSprite: {fileID: 21300000, guid: cf59ad172cddead4cb04ce448a28ee47, type: 3}
+    ActionType: 4
+  - ActionSprite: {fileID: 21300000, guid: 2a53b74c4cffe474ea61cb25b23ac819, type: 3}
+    ActionType: 5
   RepairAction: {fileID: 8390958495162688355}
-  RepairJauge: {fileID: 1600091940139705530}
+  RepairBar: {fileID: 1600091940139705530}
