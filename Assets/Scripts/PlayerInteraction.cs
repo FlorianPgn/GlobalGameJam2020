@@ -6,24 +6,52 @@ using UnityEngine;
 
 public class PlayerInteraction : MonoBehaviour
 {
-    public Collider SelectCollider;
     public Selectable SelectedObject;
-    
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+
+    public float RepairStrength = 0.25f;
+    public float Power = 10f;
 
     // Update is called once per frame
-    void Update()
+    void Start()
     {
-        
+        RepairStrength = 0.25f;
+        Power = 10f;
+    }
+
+    public void SelectObject(ActionType type)
+    {
+        if (SelectedObject != null)
+        {
+            if (SelectedObject.ReceiveInput(type, RepairStrength))
+            {
+                Power -= RepairStrength;
+            }
+        }
+    }
+    
+    public void OnA()
+    {
+        SelectObject(ActionType.A);
+    }
+
+    public void OnB()
+    {
+        SelectObject(ActionType.B);
+    }
+
+    public void OnX()
+    {
+        SelectObject(ActionType.X);
+    }
+
+    public void OnY()
+    {
+        SelectObject(ActionType.Y);
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Enter");
+        // Debug.Log("Enter");
         Selectable selectable = other.GetComponent<Selectable>();
         if (selectable != null)
         {
@@ -33,7 +61,7 @@ public class PlayerInteraction : MonoBehaviour
     }
     private void OnTriggerExit(Collider other)
     {
-        Debug.Log("Exit");
+        // Debug.Log("Exit");
         Selectable selectable = other.GetComponent<Selectable>();
         if (selectable != null)
         {
