@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class HazardManager : MonoBehaviour
 {
@@ -15,6 +16,8 @@ public class HazardManager : MonoBehaviour
     public Transform commandRoomHazardLocations;
 
     public int totalTimeInSec;
+
+    public Text timerText;
 
     private List<Hazard> hazardList;
     private float startInterval;
@@ -33,6 +36,8 @@ public class HazardManager : MonoBehaviour
         float percentageTimeLeft = Time.time / totalTimeInSec;
 
         interval = startInterval - difficultyCurve.Evaluate(percentageTimeLeft);
+
+        displayTimer();
 
     }
 
@@ -73,5 +78,29 @@ public class HazardManager : MonoBehaviour
         int randomLocationListIndex = (int) Random.Range(0f, hazardList.Count);
 
         return hazardList[randomLocationListIndex];
+    }
+
+    private void displayTimer()
+    {
+        float timerCountdown = totalTimeInSec - Time.time;
+
+        if (timerCountdown <= 0)
+        {
+            timerCountdown = 0.00f;
+            timerText.color = Color.red;
+        }
+
+        if (timerCountdown < 60)
+            timerText.text = System.Math.Round(timerCountdown, 2).ToString();
+        else
+        {
+            int minutes = (int)timerCountdown / 60;
+            int seconds = (int)timerCountdown % 60;
+
+            if (seconds < 10)
+                timerText.text = minutes + " : 0" + seconds;
+            else
+                timerText.text = minutes + " : " + seconds;
+        }
     }
 }
