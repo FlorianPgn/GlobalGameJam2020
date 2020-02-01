@@ -8,22 +8,29 @@ public class PlayerInteraction : MonoBehaviour
 {
     public Selectable SelectedObject;
 
-    public float RepairStrength = 0.32f;
-    public float Power = 10f;
+    public float RepairStrength = 0.25f;
+    public float MaxPower = 10f;
+    public float Power
+    {
+        get => _power;
+        set => _power = Mathf.Clamp(value, 0, MaxPower);
+    }
+    private float _power = 10f;
 
     // Update is called once per frame
     void Start()
     {
-        RepairStrength = 0.32f;
-        Power = 10f;
+        RepairStrength = 0.25f;
+        _power = 10f;
     }
 
     private void SelectObject(ActionType type)
     {
         if (SelectedObject != null)
         {
-            if (SelectedObject.ReceiveInput(type, RepairStrength))
+            if (SelectedObject.ReceiveInput(type, RepairStrength * (_power/10f)))
             {
+                Debug.Log(RepairStrength +" "+ _power);
                 Power -= RepairStrength;
             }
         }

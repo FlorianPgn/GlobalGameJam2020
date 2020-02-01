@@ -10,6 +10,7 @@ public class PlayerMovement : MonoBehaviour
    
     private Vector3 _velocity, _desiredVelocity;
     private Rigidbody body;
+    public Transform PlayerModel;
 
     void Awake () {
 		body = GetComponent<Rigidbody>();
@@ -28,7 +29,7 @@ public class PlayerMovement : MonoBehaviour
         Vector2 playerInput = new Vector2(h, v);
         playerInput = Vector2.ClampMagnitude(playerInput, 1f) * MaxSpeed;
         if(Math.Abs(playerInput.x) > float.Epsilon || Math.Abs(playerInput.y) > float.Epsilon)
-            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(new Vector3(playerInput.x, 0, playerInput.y)), 0.15f);
+            PlayerModel.rotation = Quaternion.Slerp(PlayerModel.rotation, Quaternion.LookRotation(new Vector3(playerInput.x, 0, playerInput.y)), 0.15f);
         _desiredVelocity = new Vector3(playerInput.x, 0f, playerInput.y);
     }
 }

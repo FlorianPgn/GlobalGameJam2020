@@ -18,8 +18,8 @@ TagManager:
   - Enemy
   - Player
   - Collectible
-  - 
-  - 
+  - Selector
+  - Selectable
   - 
   - 
   - 
