@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class Hazard : MonoBehaviour
+public abstract class Hazard : ScriptableObject 
 {
-    private Transform hazardPossibleLocations;
+    public Transform hazardPossibleLocations;
 
     public Hazard(Transform hazardPossibleLocations)
     {
@@ -31,5 +31,5 @@ public class Hazard : MonoBehaviour
         return hazardPossibleLocations;
     }
 
-    public void generateEffects(Vector3 hazardPositions) { }
+    public abstract void generateEffects(Vector3 hazardPositions);
 }

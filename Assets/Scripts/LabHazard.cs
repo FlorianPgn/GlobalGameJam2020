@@ -6,7 +6,7 @@ public class LabHazard : Hazard
 {
     public LabHazard(Transform hazardPossibleLocations) : base(hazardPossibleLocations) { }
 
-    public new void generateEffects(Vector3 hazardPosition)
+    public override void generateEffects(Vector3 hazardPosition)
     {
         //TODO Code the method.
         Debug.Log("Fuck le feu est pogner");

@@ -37,26 +37,26 @@ public class HazardManager : MonoBehaviour
         hazardList.Add(machineRoomHazard);
     }
 
-    private IEnumerator GenerateHazardAfterInterval(Hazard hazard)
+    private void GenerateHazardAfterInterval()
     {
-        float pauseEndTime = Time.realtimeSinceStartup + interval;
+       /* float pauseEndTime = Time.realtimeSinceStartup + interval;
 
         while (Time.realtimeSinceStartup < pauseEndTime)
         {
             yield return null;
         }
-
+        */
         for (int i = 0; i < silmutanousHazards; i++)
         {
-            Transform locationsList = selectHazardLocationsList();
-            hazard.generateHazard();
+            Hazard randomHazard = selectRandomHazard();
+            randomHazard.generateHazard();
         }
     }
 
-    private Transform selectHazardLocationsList()
+    private Hazard selectRandomHazard()
     {
         int randomLocationListIndex = (int) Random.Range(0f, hazardList.Count);
 
-        return hazardList[randomLocationListIndex].getHazardPossibleLocations();
+        return hazardList[randomLocationListIndex];
     }
 }
