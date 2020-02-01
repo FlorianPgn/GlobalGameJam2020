@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MachinreRoomHazard : Hazard
+public class MachineRoomHazard : Hazard
 {
     public override void generateEffects(Transform hazardPosition)
     {
