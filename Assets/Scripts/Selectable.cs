@@ -21,6 +21,11 @@ public abstract class Selectable : MonoBehaviour
             }
         }
     }
+
+    public abstract bool ReceiveInput(ActionType type);
+
+    public abstract bool ReceiveInput(ActionType type, float value);
+
     protected abstract void OnSelect();
     protected abstract void OnUnselect();
 }
