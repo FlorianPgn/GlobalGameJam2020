@@ -13,7 +13,7 @@ public class PlayerInteraction : MonoBehaviour
     public float Power
     {
         get => _power;
-        set => _power = Mathf.Min(value, MaxPower);
+        set => _power = Mathf.Clamp(value, 0, MaxPower);
     }
     private float _power = 10f;
 
@@ -28,10 +28,10 @@ public class PlayerInteraction : MonoBehaviour
     {
         if (SelectedObject != null)
         {
-            if (SelectedObject.ReceiveInput(type, RepairStrength))
+            if (SelectedObject.ReceiveInput(type, RepairStrength * (_power/10f)))
             {
                 Debug.Log(RepairStrength +" "+ _power);
-                _power -= RepairStrength;
+                Power -= RepairStrength;
             }
         }
     }
