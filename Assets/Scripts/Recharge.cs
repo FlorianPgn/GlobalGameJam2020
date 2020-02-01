@@ -24,10 +24,10 @@ public class Recharge : MonoBehaviour
             _canRecharge = true;
         }
     }
-
+    
     private void OnTriggerStay(Collider other)
     {
-        PlayerInteraction p = other.GetComponent<PlayerInteraction>();
+        PlayerInteraction p = other.GetComponentInParent<PlayerInteraction>();
         if (p != null)
         {
             if (_canRecharge)
