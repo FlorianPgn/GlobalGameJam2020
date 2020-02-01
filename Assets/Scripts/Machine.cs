@@ -17,13 +17,12 @@ public class Machine : Selectable
 
     private float _repairLevel = 1f;
     private ActionType _actionType;
-    
-    private Vector2 _joystick;
-    private Vector2 _oldJoystick;
-    private bool _sRight;
-    private bool _sLeft;
-    private float _spinCount;
-    
+
+    private int _pumpLeft;
+    private int _pumpRight;
+    private bool _pumpedLeft;
+    private bool _pumpedRight;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -49,7 +48,7 @@ public class Machine : Selectable
 
     public void Break()
     {
-        _actionType = PossibleActions[Random.Range(0, PossibleActions.Length)];
+        _actionType = PossibleActions[Random.Range(5, 6)];
         _repairLevel = 0f;
         IsWorking = false;
     }
@@ -85,14 +84,48 @@ public class Machine : Selectable
     
     public override bool ReceiveInput(ActionType type, float value)
     {
-        Debug.Log(type + " - " + _repairLevel);
-        if (_actionType == type && !IsWorking)
+        if (type == ActionType.L || type == ActionType.R)
         {
-            Repair(value);
-            return true;
+            
+            if (_pumpLeft == 10 && _pumpRight == 10)
+            {
+                Repair(value);
+                return true;
+            }
+
+            switch (type)
+            {
+                case ActionType.L when _pumpedRight:
+                    Debug.Log("OUI");
+                    _pumpLeft += 1;
+                    _pumpedLeft = true;
+                    _pumpedRight = false;
+                    _actionType = ActionType.R;
+                    break;
+                case ActionType.R when _pumpedLeft:
+                    Debug.Log("NON");
+                    _pumpRight += 1;
+                    _pumpedLeft = false;
+                    _pumpedRight = true;
+                    _actionType = ActionType.L;
+                    break;
+            }
+        }
+        else 
+        { 
+            if (_actionType == type && !IsWorking)
+            {
+                Repair(value);
+                return true;
+            }
         }
 
         return false;
+    }
+
+    public (bool, bool) GetPumped()
+    {
+        return (_pumpedLeft, _pumpedRight);
     }
 
     protected override void OnSelect()

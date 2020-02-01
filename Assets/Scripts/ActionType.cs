@@ -4,5 +4,5 @@ using UnityEngine;
 
 public enum ActionType
 {
-    A, B, X, Y, LS, RS
+    A, B, X, Y, L, R, LS, RS
 }

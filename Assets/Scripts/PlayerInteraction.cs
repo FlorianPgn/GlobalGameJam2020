@@ -55,6 +55,16 @@ public class PlayerInteraction : MonoBehaviour
     {
         SelectObject(ActionType.Y);
     }
+    
+    public void OnL()
+    {
+        SelectObject(ActionType.L);
+    }
+    
+    public void OnR()
+    {
+        SelectObject(ActionType.R);
+    }
 
     public void OnLS()
     {

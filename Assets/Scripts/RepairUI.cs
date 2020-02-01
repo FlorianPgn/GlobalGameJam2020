@@ -24,6 +24,7 @@ public class RepairUI : MonoBehaviour
     {
         ShowRepairLevel(Machine.GetRepairLevel());
         if (!Machine.IsWorking && RepairAction != null) SetRepairAction(Machine.GetActionType());
+        CheckPump();
     }
 
     private void ShowRepairLevel(float value)
@@ -41,6 +42,15 @@ public class RepairUI : MonoBehaviour
             {
                 RepairAction.sprite = ras.ActionSprite;
             }
+        }
+    }
+
+    private void CheckPump()
+    {
+        if (Machine.GetActionType() == ActionType.L || Machine.GetActionType() == ActionType.R)
+        {
+            Debug.Log("ACTION TYPE:" + Machine.GetActionType());
+            SetRepairAction(Machine.GetActionType());
         }
     }
 }
