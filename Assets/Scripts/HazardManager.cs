@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class HazardManager : MonoBehaviour
 {
-    public int interval;
+    public float interval;
+    public float timeBeforeFirstHazard;
     public AnimationCurve difficultyCurve;
     public int silmutanousHazards;
 
@@ -13,13 +14,26 @@ public class HazardManager : MonoBehaviour
     public Transform machineRoomHazardLocations;
     public Transform commandRoomHazardLocations;
 
+    public int totalTimeInSec;
+
     private List<Hazard> hazardList;
+    private float startInterval;
 
     // Start is called before the first frame update
     void Start()
     {
         initHazardsList();
-        InvokeRepeating("GenerateHazardAfterInterval", 0f, interval);
+        startInterval = interval;
+
+        StartCoroutine("GenerateHazardAfterInterval", timeBeforeFirstHazard);
+    }
+
+    private void Update()
+    {
+        float percentageTimeLeft = Time.time / totalTimeInSec;
+
+        interval = startInterval - difficultyCurve.Evaluate(percentageTimeLeft);
+
     }
 
     private void initHazardsList()
@@ -37,20 +51,22 @@ public class HazardManager : MonoBehaviour
         hazardList.Add(machineRoomHazard);
     }
 
-    private void GenerateHazardAfterInterval()
+    private IEnumerator GenerateHazardAfterInterval(float wait)
     {
-       /* float pauseEndTime = Time.realtimeSinceStartup + interval;
+        //TempsRestant/TempsDepart
+        yield return new WaitForSeconds(wait);
 
-        while (Time.realtimeSinceStartup < pauseEndTime)
+        while (true)
         {
-            yield return null;
+            Debug.Log("Hazards: " + interval);
+            for (int i = 0; i < silmutanousHazards; i++)
+            {
+                Hazard randomHazard = selectRandomHazard();
+                randomHazard.generateHazard();
+            }
+            yield return new WaitForSeconds(interval);
         }
-        */
-        for (int i = 0; i < silmutanousHazards; i++)
-        {
-            Hazard randomHazard = selectRandomHazard();
-            randomHazard.generateHazard();
-        }
+        
     }
 
     private Hazard selectRandomHazard()
