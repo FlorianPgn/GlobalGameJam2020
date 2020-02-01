@@ -53,7 +53,6 @@ public class HazardManager : MonoBehaviour
 
     private IEnumerator GenerateHazardAfterInterval(float wait)
     {
-        //TempsRestant/TempsDepart
         yield return new WaitForSeconds(wait);
 
         while (true)
