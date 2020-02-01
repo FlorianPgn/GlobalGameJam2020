@@ -25,6 +25,7 @@ public class RepairUI : MonoBehaviour
         ShowRepairLevel(Machine.GetRepairLevel());
         if (!Machine.IsWorking && RepairAction != null) SetRepairAction(Machine.GetActionType());
         CheckPump();
+        //
     }
 
     private void ShowRepairLevel(float value)
