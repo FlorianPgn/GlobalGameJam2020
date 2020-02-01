@@ -24,7 +24,7 @@ public class PlayerInteraction : MonoBehaviour
         _power = 10f;
     }
 
-    public void SelectObject(ActionType type)
+    private void SelectObject(ActionType type)
     {
         if (SelectedObject != null)
         {
@@ -54,6 +54,26 @@ public class PlayerInteraction : MonoBehaviour
     public void OnY()
     {
         SelectObject(ActionType.Y);
+    }
+    
+    public void OnL()
+    {
+        SelectObject(ActionType.L);
+    }
+    
+    public void OnR()
+    {
+        SelectObject(ActionType.R);
+    }
+
+    public void OnLS()
+    {
+        SelectObject(ActionType.LS);
+    }
+    
+    public void OnRS()
+    {
+        SelectObject(ActionType.RS);
     }
 
     private void OnTriggerEnter(Collider other)

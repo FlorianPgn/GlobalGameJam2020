@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -11,20 +12,29 @@ public class RepairUI : MonoBehaviour
         public Sprite ActionSprite;
         public ActionType ActionType;
     }
+
+    public Machine Machine;
     
     public RepairActionSprite[] RepairActionSprites;
     
     public Image RepairAction;
-    public Image RepairJauge;
+    public Image RepairBar;
 
-    public void RepairValue(float value)
+    public void Update()
     {
-        value = Mathf.Clamp01(value);
-        RepairJauge.fillAmount = value;
-        RepairAction.enabled = RepairJauge.enabled = value < 1;
+        ShowRepairLevel(Machine.GetRepairLevel());
+        if (!Machine.IsWorking && RepairAction != null) SetRepairAction(Machine.GetActionType());
+        CheckPump();
     }
 
-    public void SetRepairAction(ActionType type)
+    private void ShowRepairLevel(float value)
+    {
+        value = Mathf.Clamp01(value);
+        RepairBar.fillAmount = value;
+        RepairAction.enabled = RepairBar.enabled = value < 1;
+    }
+
+    private void SetRepairAction(ActionType type)
     {
         foreach (var ras in RepairActionSprites)
         {
@@ -32,6 +42,15 @@ public class RepairUI : MonoBehaviour
             {
                 RepairAction.sprite = ras.ActionSprite;
             }
+        }
+    }
+
+    private void CheckPump()
+    {
+        if (Machine.GetActionType() == ActionType.L || Machine.GetActionType() == ActionType.R)
+        {
+            Debug.Log("ACTION TYPE:" + Machine.GetActionType());
+            SetRepairAction(Machine.GetActionType());
         }
     }
 }

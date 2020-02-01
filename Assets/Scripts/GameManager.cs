@@ -35,17 +35,19 @@ public class GameManager : MonoBehaviour
     {
         Machine machine = SelectWorkingMachine();
         if (machine != null)
+        {
             machine.Break();
+        }
     }
 
     private Machine SelectWorkingMachine()
     {
-        Machine[] wMachines = Machines.Where(m => m.IsWorking).ToArray();
-        if (wMachines.Length == 0)
+        Machine[] workingMachines = Machines.Where(machine => machine.IsWorking).ToArray();
+        if (workingMachines.Length == 0)
         {
             return null;
         }
-        int idx = Random.Range(0, wMachines.Length);
-        return wMachines[idx];
+        int idx = Random.Range(0, workingMachines.Length);
+        return workingMachines[idx];
     }
 }
