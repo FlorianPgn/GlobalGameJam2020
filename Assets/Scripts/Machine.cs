@@ -15,11 +15,9 @@ public class Machine : Selectable
     private MeshRenderer _meshRenderer;
     private Color _baseColor;
 
-    private float _repairLevel = 1f;
+    private float _repairLevel = 1f;    
     private ActionType _actionType;
-
-    private int _pumpLeft;
-    private int _pumpRight;
+    
     private bool _pumpedLeft;
     private bool _pumpedRight;
 
@@ -84,42 +82,32 @@ public class Machine : Selectable
     
     public override bool ReceiveInput(ActionType type, float value)
     {
-        if (type == ActionType.L || type == ActionType.R)
+        if (!IsWorking)
         {
-            
-            if (_pumpLeft == 10 && _pumpRight == 10)
+            if (type == ActionType.L && !_pumpedLeft)
             {
-                Repair(value);
+                _pumpedLeft = true;
+                _pumpedRight = false;
+                _actionType = ActionType.R;
+                Repair(value / 5);
                 return true;
             }
-
-            switch (type)
+        
+            if (type == ActionType.R && !_pumpedRight)
             {
-                case ActionType.L when _pumpedRight:
-                    Debug.Log("OUI");
-                    _pumpLeft += 1;
-                    _pumpedLeft = true;
-                    _pumpedRight = false;
-                    _actionType = ActionType.R;
-                    break;
-                case ActionType.R when _pumpedLeft:
-                    Debug.Log("NON");
-                    _pumpRight += 1;
-                    _pumpedLeft = false;
-                    _pumpedRight = true;
-                    _actionType = ActionType.L;
-                    break;
+                _pumpedLeft = false;
+                _pumpedRight = true;
+                _actionType = ActionType.L;
+                Repair(value / 5);
+                return true;
             }
-        }
-        else 
-        { 
-            if (_actionType == type && !IsWorking)
+        
+            if (type == _actionType)
             {
                 Repair(value);
                 return true;
             }
         }
-
         return false;
     }
 

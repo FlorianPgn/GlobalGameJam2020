@@ -33,9 +33,6 @@ public class PlayerInput : MonoBehaviour
         float h = Input.GetAxisRaw("HorizontalL" + Id);
         float v = Input.GetAxisRaw("VerticalL" + Id);
         _movement.Move(h, v);
-
-        Debug.Log(Input.GetAxisRaw("L" + Id));
-        Debug.Log(Input.GetAxisRaw("R" + Id));
         
         if (Input.GetButtonDown("A"+Id))
         {
@@ -57,12 +54,12 @@ public class PlayerInput : MonoBehaviour
             _interaction.OnY();
             Debug.Log("Y");
         }
-        if (Input.GetAxisRaw("L"+Id) == 1)
+        if (Input.GetAxisRaw("L"+Id) > 0.9)
         {
             _interaction.OnL();
             Debug.Log("L");
         }
-        if (Input.GetAxisRaw("R"+Id) == 1)
+        if (Input.GetAxisRaw("R"+Id) > 0.8)
         {
             _interaction.OnR();
             Debug.Log("R");
