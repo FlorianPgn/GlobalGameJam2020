@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class CommandRoomHazard : Hazard
 {
-    public override void generateEffects(Transform hazardPosition)
+    public CommandRoomHazard(Transform hazardPossibleLocations) : base(hazardPossibleLocations) { }
+
+    public new void generateEffects(Vector3 hazardPosition)
     {
         //TODO Code the method.
+        Debug.Log("Fuck un fil a briser");
     }
 }

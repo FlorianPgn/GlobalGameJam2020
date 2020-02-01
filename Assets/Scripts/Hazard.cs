@@ -2,21 +2,34 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Hazard : MonoBehaviour
+[System.Serializable]
+public class Hazard : MonoBehaviour
 {
-    
-    public void generateHazard(List<Transform> hazardPossibleLocations)
+    private Transform hazardPossibleLocations;
+
+    public Hazard(Transform hazardPossibleLocations)
     {
-        Transform hazardPosition = getHazardLocation(hazardPossibleLocations);
+        this.hazardPossibleLocations = hazardPossibleLocations;
+    }
+
+    public void generateHazard()
+    {
+        Vector3 hazardPosition = getHazardLocation().position;
         generateEffects(hazardPosition);
     }
 
-    public Transform getHazardLocation(List<Transform> hazardPossibleLocations)
+    public Transform getHazardLocation()
     {
-        int randomIndex = (int) Random.Range(0f, hazardPossibleLocations.Count);
-        Transform randomTransform = hazardPossibleLocations[randomIndex];
+        int randomIndex = (int) Random.Range(0f, hazardPossibleLocations.childCount);
+        Transform randomTransform = hazardPossibleLocations.GetChild(randomIndex);
+
         return randomTransform;
     }
 
-    public abstract void generateEffects(Transform hazardPosition);
+    public Transform getHazardPossibleLocations()
+    {
+        return hazardPossibleLocations;
+    }
+
+    public void generateEffects(Vector3 hazardPositions) { }
 }

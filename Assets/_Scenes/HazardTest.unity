@@ -149,8 +149,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12d8410ccb43d4841aa853a24e1a5e15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interval: 0
-  intervalChangeRate: 0
+  interval: 2
   difficultyCurve:
     serializedVersion: 2
     m_Curve:
@@ -175,6 +174,11 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  silmutanousHazards: 2
+  toiletHazardLocations: {fileID: 0}
+  labHazardLocations: {fileID: 0}
+  machineRoomHazardLocations: {fileID: 0}
+  commandRoomHazardLocations: {fileID: 0}
 --- !u!4 &384545121
 Transform:
   m_ObjectHideFlags: 0

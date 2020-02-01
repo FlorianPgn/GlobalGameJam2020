@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,6 +6,12 @@ public class HazardManager : MonoBehaviour
 {
     public int interval;
     public AnimationCurve difficultyCurve;
+    public int silmutanousHazards;
+
+    public Transform toiletHazardLocations;
+    public Transform labHazardLocations;
+    public Transform machineRoomHazardLocations;
+    public Transform commandRoomHazardLocations;
 
     private List<Hazard> hazardList;
 
@@ -14,26 +19,44 @@ public class HazardManager : MonoBehaviour
     void Start()
     {
         initHazardsList();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        InvokeRepeating("GenerateHazardAfterInterval", 0f, interval);
     }
 
     private void initHazardsList()
     {
-        Hazard toiletteHazard = new ToiletteHazard();
-        Hazard commandRoomHazard = new CommandRoomHazard();
-        Hazard labHazard = new LabHazard();
-        Hazard machineRoomHazard = new MachineRoomHazard();
+        Hazard toiletHazard = new ToiletHazard(toiletHazardLocations);
+        Hazard commandRoomHazard = new CommandRoomHazard(commandRoomHazardLocations);
+        Hazard labHazard = new LabHazard(labHazardLocations);
+        Hazard machineRoomHazard = new MachineRoomHazard(machineRoomHazardLocations);
 
         hazardList = new List<Hazard>();
 
-        hazardList.Add(toiletteHazard);
+        hazardList.Add(toiletHazard);
         hazardList.Add(commandRoomHazard);
         hazardList.Add(labHazard);
         hazardList.Add(machineRoomHazard);
+    }
+
+    private IEnumerator GenerateHazardAfterInterval(Hazard hazard)
+    {
+        float pauseEndTime = Time.realtimeSinceStartup + interval;
+
+        while (Time.realtimeSinceStartup < pauseEndTime)
+        {
+            yield return null;
+        }
+
+        for (int i = 0; i < silmutanousHazards; i++)
+        {
+            Transform locationsList = selectHazardLocationsList();
+            hazard.generateHazard();
+        }
+    }
+
+    private Transform selectHazardLocationsList()
+    {
+        int randomLocationListIndex = (int) Random.Range(0f, hazardList.Count);
+
+        return hazardList[randomLocationListIndex].getHazardPossibleLocations();
     }
 }

@@ -2,10 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ToiletteHazard : Hazard
+[System.Serializable]
+public class ToiletHazard : Hazard
 {
-    public override void generateEffects(Transform hazardPosition)
+
+    public ToiletHazard(Transform hazardPossibleLocations) : base(hazardPossibleLocations){}
+
+    public new void generateEffects(Vector3 hazardPosition)
     {
         //TODO Code the method.
+        Debug.Log("Fuck une toilette est boucher a: " + hazardPosition);
     }
 }
