@@ -18,7 +18,6 @@ public class PlayerUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(_interaction.Power);
         EnergyBar.fillAmount = _interaction.Power / _interaction.MaxPower;
     }
 }
