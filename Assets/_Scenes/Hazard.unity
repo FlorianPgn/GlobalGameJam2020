@@ -490,6 +490,11 @@ PrefabInstance:
       propertyPath: Camera
       value: 
       objectReference: {fileID: 185949411}
+    - target: {fileID: 1975143851626825187, guid: 096444f5c93c9804fa2a39066c074c06,
+        type: 3}
+      propertyPath: Difficulty
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 8252307408177548482, guid: 096444f5c93c9804fa2a39066c074c06,
         type: 3}
       propertyPath: m_Camera

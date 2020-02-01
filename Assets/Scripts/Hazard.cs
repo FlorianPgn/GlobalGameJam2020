@@ -14,22 +14,24 @@ public class Hazard : MonoBehaviour
 
     public Camera Camera;
     public InputsController Controls;
+    public GameObject Cube;
+    
     public float RepairGoal;
     public float RepairPower;
+    public int Difficulty = 1;
+    
     public Image RepairBar;
     public Image RepairBarFiller;
     public Image AwaitedInput;
     public Sprite[] SpritesInputs;
-    public Color Color;
-
-    public Vector2 Joystick;
-    public Vector2 OldJoystick;
     
     private String _key;
     private float _repairLevel;
-    private bool _isRepaired;
     private bool _isRepairBarShown;
+    private bool _isRepaired;
 
+    private Vector2 _joystick;
+    private Vector2 _oldJoystick;
     private bool _sRight;
     private bool _sLeft;
     private float _spinCount;
@@ -38,7 +40,7 @@ public class Hazard : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GenerateKey();
+        StartRepair();
     }
 
     // Update is called once per frame
@@ -50,10 +52,10 @@ public class Hazard : MonoBehaviour
     private void GenerateKey()
     {
         _key = "" + (Inputs) Random.Range(0, 6);
-        Debug.Log("Input needed : " + _key);
         Vector3 hazardPosition = Camera.WorldToScreenPoint(transform.position);
-        AwaitedInput.transform.position = new Vector3(hazardPosition.x, hazardPosition.y + 110, hazardPosition.z);
+        AwaitedInput.transform.position = new Vector3(hazardPosition.x, hazardPosition.y + 105, hazardPosition.z);
         AwaitedInput.sprite = SpritesInputs[GetKeySprite()];
+        Debug.Log("Input needed : " + _key);
     }
 
     private int GetKeySprite()
@@ -76,69 +78,96 @@ public class Hazard : MonoBehaviour
         return 0;
     }
 
-    private void Repair(String key, float repairPower)
+    private void Repair(String key)
     {
         if (_repairLevel != RepairGoal && _key == key)
         {
-            _repairLevel += repairPower;
-            UpdateRepairBar();
-            Debug.Log("Repair Level : " + _repairLevel + "/" + RepairGoal);
+            UpdateRepair();
             if (_repairLevel == RepairGoal)
             {
-                _isRepaired = true;
-                _isRepairBarShown = false;
-                Debug.Log("Object Repaired !");
+                Difficulty -= 1;
+                if (Difficulty != 0)
+                {
+                    ResetRepair();
+                }
+                else
+                {
+                    EndRepair();
+                }
             }
         }
     }
 
-    private void UpdateRepairBar()
+    private void StartRepair()
+    {
+        if (!_isRepairBarShown)
+        {
+            Cube.GetComponent<MeshRenderer>().material.color = Color.red;
+            GenerateKey();
+            Vector3 hazardPosition = Camera.WorldToScreenPoint(transform.position);
+            RepairBar.transform.position = new Vector3(hazardPosition.x, hazardPosition.y + 60, hazardPosition.z);
+            RepairBarFiller.transform.position = new Vector3(hazardPosition.x, hazardPosition.y + 60, hazardPosition.z);
+            RepairBar.color = RepairBarFiller.color = new Color(255, 255, 255, 255f);
+            RepairBarFiller.fillAmount = 0;
+            _isRepairBarShown = true;
+        }
+    }
+
+    private void UpdateRepair()
     {
         if (!_isRepaired)
         {
-            if (!_isRepairBarShown)
-            {
-                Vector3 hazardPosition = Camera.WorldToScreenPoint(transform.position);
-                RepairBar.transform.position = new Vector3(hazardPosition.x, hazardPosition.y + 60, hazardPosition.z);
-                RepairBarFiller.transform.position = new Vector3(hazardPosition.x, hazardPosition.y + 60, hazardPosition.z);
-                RepairBar.color = Color;
-                RepairBarFiller.color = Color;
-                RepairBarFiller.fillAmount = 0;
-                _isRepairBarShown = true;
-            }
+            _repairLevel += RepairPower;
             RepairBarFiller.fillAmount = _repairLevel / RepairGoal;
+            Debug.Log("Repair Level : " + _repairLevel + "/" + RepairGoal);
         }
+    }
+
+    private void ResetRepair()
+    {
+        GenerateKey();
+        _repairLevel = 0;
+        RepairBarFiller.fillAmount = 0;
+    }
+
+    private void EndRepair()
+    {
+        _isRepaired = true;
+        Cube.GetComponent<MeshRenderer>().material.color = Color.green;
+        AwaitedInput.color = RepairBar.color = RepairBarFiller.color = new Color(0, 0, 0, 0);
+        _isRepairBarShown = false;
+        Debug.Log("Object Repaired !");
     }
 
     private void OnA()
     {
         //Debug.Log("BUTTON A PRESSED");
-        Repair("A", RepairPower);
+        Repair("A");
     }
     
     private void OnB()
     {
         //Debug.Log("BUTTON B PRESSED");
-        Repair("B", RepairPower);
+        Repair("B");
     }
     
     private void OnX()
     {
         //Debug.Log("BUTTON X PRESSED");
-        Repair("X", RepairPower);
+        Repair("X");
     }
     
     private void OnY()
     {
         //Debug.Log("BUTTON Y PRESSED");
-        Repair("Y", RepairPower);
+        Repair("Y");
     }
 
     private void OnJoystick(InputValue value)
     {
-        Joystick = (Vector2) value.Get();
+        _joystick = (Vector2) value.Get();
         GetSpin();
-        OldJoystick = Joystick;
+        _oldJoystick = _joystick;
     }
 
     private void GetSpin()
@@ -146,14 +175,14 @@ public class Hazard : MonoBehaviour
         if (_key == "SR")
         {
             //AVOID SPINNING SL
-            if (OldJoystick.x > 0 && OldJoystick.y > 0 && Joystick.x > OldJoystick.x && Joystick.y < OldJoystick.y && !_sRight)
+            if (_oldJoystick.x > 0 && _oldJoystick.y > 0 && _joystick.x > _oldJoystick.x && _joystick.y < _oldJoystick.y && !_sRight)
             {
                 _spinCount += 0.5f;
                 _sLeft = false;
                 _sRight = true;
             }
             //AVOID SPINNING SL
-            if (OldJoystick.x < 0 && OldJoystick.y < 0 && Joystick.x < OldJoystick.x && Joystick.y > OldJoystick.y)
+            if (_oldJoystick.x < 0 && _oldJoystick.y < 0 && _joystick.x < _oldJoystick.x && _joystick.y > _oldJoystick.y)
             {
                 _spinCount += 0.5f;
                 _sRight = false;
@@ -164,14 +193,14 @@ public class Hazard : MonoBehaviour
         if (_key == "SL")
         {
             //AVOID SPINNING SR
-            if (OldJoystick.x < 0 && OldJoystick.y > 0 && Joystick.x < OldJoystick.x && Joystick.y < OldJoystick.y && !_sLeft)
+            if (_oldJoystick.x < 0 && _oldJoystick.y > 0 && _joystick.x < _oldJoystick.x && _joystick.y < _oldJoystick.y && !_sLeft)
             {
                 _spinCount += 0.5f;
                 _sRight = false;
                 _sLeft = true;
             }
             //AVOID SPINNING SR
-            if (OldJoystick.x > 0 && OldJoystick.y < 0 && Joystick.x > OldJoystick.x && Joystick.y > OldJoystick.y && !_sRight)
+            if (_oldJoystick.x > 0 && _oldJoystick.y < 0 && _joystick.x > _oldJoystick.x && _joystick.y > _oldJoystick.y && !_sRight)
             {
                 _spinCount += 0.5f;
                 _sLeft = false;
@@ -181,7 +210,7 @@ public class Hazard : MonoBehaviour
 
         if (_spinCount >= 1)
         {
-            _spinCount = 0; Repair(_key, RepairPower);
+            _spinCount = 0; Repair(_key);
         }
     }
 }
