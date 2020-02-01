@@ -87,7 +87,7 @@ public class Hazard : MonoBehaviour
             {
                 _isRepaired = true;
                 _isRepairBarShown = false;
-                Debug.Log("Object Repaired");
+                Debug.Log("Object Repaired !");
             }
         }
     }
@@ -112,25 +112,25 @@ public class Hazard : MonoBehaviour
 
     private void OnA()
     {
-        Debug.Log("BUTTON A PRESSED");
+        //Debug.Log("BUTTON A PRESSED");
         Repair("A", RepairPower);
     }
     
     private void OnB()
     {
-        Debug.Log("BUTTON B PRESSED");
+        //Debug.Log("BUTTON B PRESSED");
         Repair("B", RepairPower);
     }
     
     private void OnX()
     {
-        Debug.Log("BUTTON X PRESSED");
+        //Debug.Log("BUTTON X PRESSED");
         Repair("X", RepairPower);
     }
     
     private void OnY()
     {
-        Debug.Log("BUTTON Y PRESSED");
+        //Debug.Log("BUTTON Y PRESSED");
         Repair("Y", RepairPower);
     }
 
