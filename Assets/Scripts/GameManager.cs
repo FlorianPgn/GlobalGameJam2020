@@ -31,9 +31,12 @@ public class GameManager : MonoBehaviour
     private List<int> _workingMachines;
 
     private const int SIX_MINUTES = 6 * 60;
+
+    public float TimeStart;
     
     void Start()
     {
+        TimeStart = Time.time;
         _nextHazardTiming = Time.time + HazardDelay;
         SoundManager.instance.PlayAmbiance(ambiance, .8f);
         SoundManager.instance.PlayLoop(music);
