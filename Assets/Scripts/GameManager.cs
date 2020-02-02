@@ -22,11 +22,13 @@ public class GameManager : MonoBehaviour
     public int timeBetweenSpeedLoss = 3;
     [Range(0, 5)]
     public int timeForFirstHazard;
+    public float medecineCreationTime;
 
     public Text timerText;
 
     private float _nextHazardTiming;
     private int startingEstimatedTime;
+    private int nbMedecine;
     
     private List<int> _workingMachines;
 
@@ -37,10 +39,12 @@ public class GameManager : MonoBehaviour
         _nextHazardTiming = Time.time + HazardDelay;
         SoundManager.instance.PlayAmbiance(ambiance, .8f);
         SoundManager.instance.PlayLoop(music);
+        nbMedecine = 0;
 
         startingEstimatedTime = totalTimeInSec;
         InvokeRepeating("findBrokenMachine", 0, timeBetweenSpeedLoss);
         InvokeRepeating("autoRepair", 0, timeBetweenSpeedLoss * 1.5f);
+        InvokeRepeating("CreateMedecine", 0, medecineCreationTime);
 
         for (int i = 0; i < silmutanousHazards; i++)
         {
@@ -61,7 +65,7 @@ public class GameManager : MonoBehaviour
                 BreakMachine();
             }
         }
-
+        
         displayTimer();
     }
 
@@ -125,7 +129,7 @@ public class GameManager : MonoBehaviour
     {
         int i = 0;
         Machine[] nonWorkingMachines = Machines.Where(machine => !machine.IsWorking).ToArray();
-
+        
         if (nonWorkingMachines.Length != 0)
         {
             while (nonWorkingMachines[i])
@@ -148,5 +152,25 @@ public class GameManager : MonoBehaviour
 
         if (totalTimeInSec < startingEstimatedTime)
             totalTimeInSec = startingEstimatedTime;
+    }
+
+    private void CreateMedecine()
+    {
+        int i = 0;
+
+        while (i < Machines.Length)
+        {
+            System.Object value = Machines.GetValue(i);
+
+            if((value.Equals(Machines.GetValue(2)) ||
+                value.Equals(Machines.GetValue(3))) &&
+                Time.time >= medecineCreationTime &&
+                Machines[i].IsWorking)
+            {
+                nbMedecine++;
+            }
+
+            i++;
+        }
     }
 }
