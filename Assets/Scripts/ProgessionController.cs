@@ -31,8 +31,7 @@ public class ProgessionController : MonoBehaviour
         Vector3 barPos = Size.transform.position;
         float barWidth = Size.GetComponent<RectTransform>().rect.width;
         float barHeight = Size.GetComponent<RectTransform>().rect.height;
-        Debug.Log(barPos);
-        Debug.Log(barWidth/ 2);
+
         StartPos = Zeppelin.transform.position;
         EndPos = StartPos + Vector3.right * barWidth;
         EndPos = End.position;
@@ -44,7 +43,7 @@ public class ProgessionController : MonoBehaviour
     {
  
         float t = (Manager.TimeStart + Time.time) / Manager.totalTimeInSec;
-        //Debug.Log(t);
+        
         Zeppelin.transform.position = Vector3.Lerp(StartPos, StartPos + DifferencePos, t);
         if (t > 0.6f && !_musicPlayed)
         {

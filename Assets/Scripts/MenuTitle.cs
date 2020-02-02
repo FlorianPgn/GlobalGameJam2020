@@ -10,7 +10,11 @@ public class MenuTitle : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //SoundManager.instance.PlayLoop(menuTheme);
+        if (menuTheme != null)
+        {
+            if(SoundManager.instance.musicSource.clip != menuTheme)
+                SoundManager.instance.PlayLoop(menuTheme);
+        }
     }
     
     public void StartGame()

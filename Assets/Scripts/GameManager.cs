@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.SocialPlatforms;
 using UnityEngine.UI;
 
@@ -101,7 +102,11 @@ public class GameManager : MonoBehaviour
         int estimatedSeconds = totalTimeInSec % 60;
 
         if (Time.time >= totalTimeInSec)
-            timerText.text = "Game over"; //Ajouter la méchanique de game over ici.
+        {
+            //Ajouter la méchanique de game over ici.
+            timerText.text = "Game over";
+            SceneManager.LoadScene("MenuEnd3");
+        }
         else
         {
             if (estimatedSeconds < 10)
@@ -113,8 +118,8 @@ public class GameManager : MonoBehaviour
                 timerText.text = Math.Round(Time.time, 2).ToString() + estimatedTime;
             else
             {
-                int minutes = (int)Time.time / 60;
-                int seconds = (int)Time.time % 60;
+                int minutes = (int) Time.time / 60;
+                int seconds = (int) Time.time % 60;
 
                 if (seconds < 10)
                     timerText.text = minutes + ":0" + seconds + estimatedTime;

@@ -1189,8 +1189,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_HorizontalAxis: HorizontalP1
-  m_VerticalAxis: VerticalP1
+  m_HorizontalAxis: HorizontalLP1
+  m_VerticalAxis: VerticalLP1
   m_SubmitButton: AP1
   m_CancelButton: BP1
   m_InputActionsPerSecond: 10
@@ -1359,8 +1359,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1755b863ac78bf749bb89370a0778b9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-<<<<<<< HEAD:Assets/_Scenes/Menu.unity
   menuTheme: {fileID: 8300000, guid: 96509f057ed95ba4a8e8b2debf342915, type: 3}
-=======
-  menuTheme: {fileID: 0}
->>>>>>> origin/master:Assets/_Scenes/MenuTitle.unity
