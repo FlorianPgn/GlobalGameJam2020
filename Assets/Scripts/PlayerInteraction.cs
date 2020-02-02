@@ -29,7 +29,7 @@ public class PlayerInteraction : MonoBehaviour
 
     private void SelectObject(ActionType type)
     {
-        if (SelectedObject != null)
+        if (Power > 0 && SelectedObject != null)
         {
             if (SelectedObject.ReceiveInput(type, RepairStrength * (_power/MaxPower)))
             {

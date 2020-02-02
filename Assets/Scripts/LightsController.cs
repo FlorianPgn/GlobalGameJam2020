@@ -22,6 +22,7 @@ public class LightsController : Toggled
     public float LightsBugProba = 0.1f;
 
     private bool _lightBugHappening = false;
+    public AudioClip Clip;
 
     public GameObject LightAlarm;
     
@@ -54,6 +55,7 @@ public class LightsController : Toggled
     private void TurnOffLights()
     {
         _lightBugHappening = true;
+        SoundManager.instance.PlaySingle(Clip, 0.25f);
         int idx = Random.Range(0, _lights.Length);
         foreach (var light in _lights[idx])
         {

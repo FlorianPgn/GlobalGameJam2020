@@ -6,10 +6,15 @@ public class SoundManager : MonoBehaviour
 {
     public static SoundManager instance = null;
     public AudioSource fxSource;
+    public AudioSource fxSource2;
+    public AudioSource fxSource3;
+    public AudioSource fxSource4;
     public AudioSource musicSource;
     public AudioSource musicSource2;
     public AudioSource ambiance;
 
+    private AudioSource[] fxSourcePool => new[] {fxSource, fxSource2, fxSource3, fxSource4};
+    
     private float _volume = 1f;
     private float _lowPitchRange = .95f;
     private float _highPitchRange = 1.85f;
@@ -54,9 +59,10 @@ public class SoundManager : MonoBehaviour
     
     public void PlaySingle(AudioClip clip, float volume)
     {
-        fxSource.volume = volume;
-        fxSource.clip = clip;
-        fxSource.Play();
+        AudioSource source = GetFreeSource();
+        source.volume = volume;
+        source.clip = clip;
+        source.Play();
 
     }
 
@@ -93,10 +99,12 @@ public class SoundManager : MonoBehaviour
         }
         int randomIndex = Random.Range(0, clips.Length);
         float randomPitch = Random.Range(_lowPitchRange, _highPitchRange);
-        fxSource.pitch = randomPitch;
-        fxSource.clip = clips[randomIndex].Audio;
-        fxSource.volume = clips[randomIndex].Volume;
-        fxSource.Play();
+        
+        AudioSource source = GetFreeSource();
+        source.pitch = randomPitch;
+        source.clip = clips[randomIndex].Audio;
+        source.volume = clips[randomIndex].Volume;
+        source.Play();
     }
 
     public void SetVolume(float volumePercent)
@@ -138,6 +146,17 @@ public class SoundManager : MonoBehaviour
 
 
 
+    }
+
+    private AudioSource GetFreeSource()
+    {
+        foreach (var source in fxSourcePool)
+        {
+            if (!source.isPlaying)
+                return source;
+        }
+
+        return fxSourcePool[0];
     }
 
     private IEnumerator AnimatedMusicCrossFade(float duration)
