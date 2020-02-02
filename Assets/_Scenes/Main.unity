@@ -12094,8 +12094,8 @@ MonoBehaviour:
   - {fileID: 477990507}
   music: {fileID: 8300000, guid: 1839cf4a8415c274f97d681f2d5aef23, type: 3}
   ambiance: {fileID: 8300000, guid: 28ef577117d0df848b266f1af79ed269, type: 3}
-  HazardDelay: 1.89
-  silmutanousHazards: 5
+  HazardDelay: 8
+  silmutanousHazards: 2
   difficultyCurve:
     serializedVersion: 2
     m_Curve:
@@ -12120,10 +12120,10 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  totalTimeInSec: 61
+  totalTimeInSec: 120
   speedLoss: 0.025
-  timeBetweenSpeedLoss: 1
-  timeForFirstHazard: 0
+  timeBetweenSpeedLoss: 8
+  timeForFirstHazard: 10
   medecineCreationTime: 2
   timerText: {fileID: 1153509067}
   TimeStart: 0
