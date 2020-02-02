@@ -283,7 +283,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11a42f935123ab147954ab12f0542f48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Machine: {fileID: 174213465}
   RepairActionSprites:
   - ActionSprite: {fileID: 21300000, guid: 025779f9be4f5c7429ed57b335bb2d6f, type: 3}
     ActionType: 0
@@ -642,7 +641,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11a42f935123ab147954ab12f0542f48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Machine: {fileID: 1369583226}
   RepairActionSprites:
   - ActionSprite: {fileID: 21300000, guid: 025779f9be4f5c7429ed57b335bb2d6f, type: 3}
     ActionType: 0
@@ -1147,6 +1145,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 14
       objectReference: {fileID: 0}
+    - target: {fileID: 4000335888856576100, guid: 8cc15d81545097943b11ee7eb2a35bff,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 2c44a0e12f1acfb418f8ac105cb30eb4, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8cc15d81545097943b11ee7eb2a35bff, type: 3}
 --- !u!114 &1744975733 stripped
