@@ -2409,6 +2409,11 @@ PrefabInstance:
       propertyPath: m_IsTrigger
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 29798734708491692, guid: 8cc15d81545097943b11ee7eb2a35bff,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 29798735603620400, guid: 8cc15d81545097943b11ee7eb2a35bff,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2468,6 +2473,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: MapV03
+      objectReference: {fileID: 0}
+    - target: {fileID: 29798736389426149, guid: 8cc15d81545097943b11ee7eb2a35bff,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 614444816310742757, guid: 8cc15d81545097943b11ee7eb2a35bff,
         type: 3}

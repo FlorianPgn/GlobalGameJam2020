@@ -95,7 +95,7 @@ public class PlayerInput : MonoBehaviour
             }
         }
         //AVOID SPINNING SL
-        if (OldJoystick.x < -0.4 && OldJoystick.y < -0.4 && Joystick.x < OldJoystick.x && Joystick.y > OldJoystick.y)
+        if (OldJoystick.x < -0.4 && OldJoystick.y < -0.4 && Joystick.x < OldJoystick.x && Joystick.y > OldJoystick.y && !_sLeft)
         {
             _spinCount += 0.5f;
             _sRight = false;

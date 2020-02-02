@@ -6,7 +6,7 @@ AnimatorOverrideController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Engrenage
+  m_Name: EngrenagesController
   m_Controller: {fileID: 9100000, guid: 2c44a0e12f1acfb418f8ac105cb30eb4, type: 2}
   m_Clips:
   - m_OriginalClip: {fileID: 7400000, guid: 1ecc251917fc3de4e9ad2052dca011b2, type: 2}

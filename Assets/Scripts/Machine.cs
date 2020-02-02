@@ -16,7 +16,7 @@ public class Machine : Selectable
     private Color _baseColor;
     private float _repairLevel = 1f;    
     private ActionType _actionType;
-    private Animator _machineAnimator;
+    public Animator MachineAnimator;
     
     private bool _pumpedLeft;
     private bool _pumpedRight;
@@ -34,13 +34,14 @@ public class Machine : Selectable
             _baseColor = MeshRenderer.material.color;        
         }
         IsWorking = true;
-        _machineAnimator = GetComponent<Animator>();
+        if(MachineAnimator == null)
+            MachineAnimator = GetComponent<Animator>();
     }
 
     private void Update()
     {
-        if(_machineAnimator != null)
-            _machineAnimator.SetBool("Broken", !IsWorking);
+        if(MachineAnimator != null)
+            MachineAnimator.SetBool("Broken", !IsWorking);
     }
 
     public float GetRepairLevel()
@@ -99,7 +100,7 @@ public class Machine : Selectable
                 _pumpedLeft = true;
                 _pumpedRight = false;
                 _actionType = ActionType.R;
-                Repair(value / 5f);
+                Repair(value / 2f);
                 return true;
             }
         
@@ -108,7 +109,7 @@ public class Machine : Selectable
                 _pumpedLeft = false;
                 _pumpedRight = true;
                 _actionType = ActionType.L;
-                Repair(value / 5f);
+                Repair(value / 2f);
                 return true;
             }
         
