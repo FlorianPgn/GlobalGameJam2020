@@ -332,7 +332,7 @@ GameObject:
   - component: {fileID: 42572103}
   - component: {fileID: 42572102}
   - component: {fileID: 42572101}
-  m_Layer: 16
+  m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -431,7 +431,7 @@ GameObject:
   - component: {fileID: 67322222}
   - component: {fileID: 67322224}
   - component: {fileID: 67322223}
-  m_Layer: 18
+  m_Layer: 5
   m_Name: RepairBarFiller
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -962,7 +962,7 @@ GameObject:
   - component: {fileID: 168425199}
   - component: {fileID: 168425201}
   - component: {fileID: 168425200}
-  m_Layer: 17
+  m_Layer: 5
   m_Name: RepairBarFiller
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1033,6 +1033,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 197642938}
+  - component: {fileID: 197642939}
   m_Layer: 16
   m_Name: ROOMLabo
   m_TagString: Untagged
@@ -1059,6 +1060,19 @@ Transform:
   m_Father: {fileID: 4000335888708328880}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &197642939
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 197642937}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 6.877186, y: 4.084234, z: 3.6387367}
+  m_Center: {x: 3.572575, y: 1.5421171, z: -3.0671015}
 --- !u!1 &202485766
 GameObject:
   m_ObjectHideFlags: 0
@@ -1849,7 +1863,7 @@ GameObject:
   - component: {fileID: 269447397}
   - component: {fileID: 269447396}
   - component: {fileID: 269447395}
-  m_Layer: 15
+  m_Layer: 5
   m_Name: Canvas (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2353,7 +2367,7 @@ GameObject:
   - component: {fileID: 327319804}
   - component: {fileID: 327319806}
   - component: {fileID: 327319805}
-  m_Layer: 18
+  m_Layer: 5
   m_Name: AwaitedInput
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2427,7 +2441,7 @@ GameObject:
   - component: {fileID: 328190065}
   - component: {fileID: 328190064}
   - component: {fileID: 328190063}
-  m_Layer: 17
+  m_Layer: 5
   m_Name: Canvas (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2687,6 +2701,12 @@ MonoBehaviour:
   PossibleActions: 000000000100000002000000030000000400000005000000
   IsWorking: 1
   Difficulty: 1
+  BreakClip:
+    Audio: {fileID: 0}
+    Volume: 0
+  RepairClip:
+    Audio: {fileID: 0}
+    Volume: 0
   MeshRenderer: {fileID: 1807092217}
   MachineAnimator: {fileID: 0}
 --- !u!136 &331870717
@@ -2758,6 +2778,12 @@ MonoBehaviour:
   PossibleActions: 06000000070000000100000003000000
   IsWorking: 1
   Difficulty: 1
+  BreakClip:
+    Audio: {fileID: 0}
+    Volume: 0
+  RepairClip:
+    Audio: {fileID: 0}
+    Volume: 0
   MeshRenderer: {fileID: 1415011569}
   MachineAnimator: {fileID: 0}
 --- !u!114 &338088316
@@ -3285,6 +3311,12 @@ MonoBehaviour:
   PossibleActions: 06000000070000000400000005000000
   IsWorking: 1
   Difficulty: 1
+  BreakClip:
+    Audio: {fileID: 0}
+    Volume: 0
+  RepairClip:
+    Audio: {fileID: 0}
+    Volume: 0
   MeshRenderer: {fileID: 423416884}
   MachineAnimator: {fileID: 937703832}
 --- !u!114 &423416882
@@ -3388,7 +3420,7 @@ GameObject:
   - component: {fileID: 426414535}
   - component: {fileID: 426414534}
   - component: {fileID: 426414533}
-  m_Layer: 15
+  m_Layer: 5
   m_Name: RepairBarFiller
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3581,7 +3613,7 @@ GameObject:
   - component: {fileID: 462538900}
   - component: {fileID: 462538902}
   - component: {fileID: 462538901}
-  m_Layer: 15
+  m_Layer: 5
   m_Name: RepairBarFiller
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3727,6 +3759,12 @@ MonoBehaviour:
   PossibleActions: 040000000500000000000000
   IsWorking: 1
   Difficulty: 1
+  BreakClip:
+    Audio: {fileID: 0}
+    Volume: 0
+  RepairClip:
+    Audio: {fileID: 0}
+    Volume: 0
   MeshRenderer: {fileID: 477990509}
   MachineAnimator: {fileID: 0}
 --- !u!65 &477990508
@@ -4288,7 +4326,7 @@ GameObject:
   - component: {fileID: 620007601}
   - component: {fileID: 620007600}
   - component: {fileID: 620007599}
-  m_Layer: 18
+  m_Layer: 5
   m_Name: Canvas (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4466,7 +4504,7 @@ GameObject:
   - component: {fileID: 651152633}
   - component: {fileID: 651152635}
   - component: {fileID: 651152634}
-  m_Layer: 17
+  m_Layer: 5
   m_Name: AwaitedInput
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4695,7 +4733,7 @@ GameObject:
   - component: {fileID: 682489046}
   - component: {fileID: 682489048}
   - component: {fileID: 682489047}
-  m_Layer: 16
+  m_Layer: 5
   m_Name: AwaitedInput
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4768,7 +4806,7 @@ GameObject:
   - component: {fileID: 693623058}
   - component: {fileID: 693623060}
   - component: {fileID: 693623059}
-  m_Layer: 17
+  m_Layer: 5
   m_Name: RepairBarFiller
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5561,6 +5599,12 @@ MonoBehaviour:
   PossibleActions: 060000000700000002000000
   IsWorking: 1
   Difficulty: 1
+  BreakClip:
+    Audio: {fileID: 0}
+    Volume: 0
+  RepairClip:
+    Audio: {fileID: 0}
+    Volume: 0
   MeshRenderer: {fileID: 879287663}
   MachineAnimator: {fileID: 0}
 --- !u!114 &804127394
@@ -6337,7 +6381,7 @@ GameObject:
   - component: {fileID: 890265169}
   - component: {fileID: 890265168}
   - component: {fileID: 890265167}
-  m_Layer: 17
+  m_Layer: 5
   m_Name: Canvas (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6565,7 +6609,7 @@ GameObject:
   - component: {fileID: 934253575}
   - component: {fileID: 934253577}
   - component: {fileID: 934253576}
-  m_Layer: 16
+  m_Layer: 5
   m_Name: AwaitedInput
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7042,7 +7086,7 @@ GameObject:
   - component: {fileID: 1056607573}
   - component: {fileID: 1056607575}
   - component: {fileID: 1056607574}
-  m_Layer: 16
+  m_Layer: 5
   m_Name: RepairBarFiller
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7661,7 +7705,7 @@ GameObject:
   - component: {fileID: 1175673379}
   - component: {fileID: 1175673381}
   - component: {fileID: 1175673380}
-  m_Layer: 16
+  m_Layer: 5
   m_Name: RepairBarFiller
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8119,6 +8163,12 @@ MonoBehaviour:
   PossibleActions: 0000000001000000020000000300000004000000050000000600000007000000
   IsWorking: 1
   Difficulty: 1
+  BreakClip:
+    Audio: {fileID: 0}
+    Volume: 0
+  RepairClip:
+    Audio: {fileID: 0}
+    Volume: 0
   MeshRenderer: {fileID: 1256014307}
   MachineAnimator: {fileID: 0}
 --- !u!114 &1256014305
@@ -8914,7 +8964,7 @@ GameObject:
   - component: {fileID: 1336839804}
   - component: {fileID: 1336839806}
   - component: {fileID: 1336839805}
-  m_Layer: 17
+  m_Layer: 5
   m_Name: AwaitedInput
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9779,6 +9829,12 @@ MonoBehaviour:
   PossibleActions: 020000000300000004000000
   IsWorking: 1
   Difficulty: 1
+  BreakClip:
+    Audio: {fileID: 0}
+    Volume: 0
+  RepairClip:
+    Audio: {fileID: 0}
+    Volume: 0
   MeshRenderer: {fileID: 1387955318}
   MachineAnimator: {fileID: 0}
 --- !u!65 &1387955322
@@ -10429,7 +10485,7 @@ GameObject:
   - component: {fileID: 1434130379}
   - component: {fileID: 1434130381}
   - component: {fileID: 1434130380}
-  m_Layer: 18
+  m_Layer: 5
   m_Name: RepairBarFiller
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10502,7 +10558,7 @@ GameObject:
   - component: {fileID: 1449792538}
   - component: {fileID: 1449792540}
   - component: {fileID: 1449792539}
-  m_Layer: 18
+  m_Layer: 5
   m_Name: AwaitedInput
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10731,7 +10787,7 @@ GameObject:
   - component: {fileID: 1472426699}
   - component: {fileID: 1472426700}
   - component: {fileID: 1472426701}
-  m_Layer: 15
+  m_Layer: 5
   m_Name: AwaitedInput
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11272,7 +11328,7 @@ GameObject:
   - component: {fileID: 1564212298}
   - component: {fileID: 1564212300}
   - component: {fileID: 1564212299}
-  m_Layer: 15
+  m_Layer: 5
   m_Name: AwaitedInput
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11951,6 +12007,15 @@ MonoBehaviour:
   LaboLight:
   - {fileID: 29798735172607512}
   - {fileID: 29798735713260978}
+  MachinesImages:
+  - {fileID: 1336839805}
+  - {fileID: 651152634}
+  BathroomImages:
+  - {fileID: 1449792539}
+  - {fileID: 327319805}
+  LaboImages:
+  - {fileID: 934253576}
+  - {fileID: 682489047}
   LightsBugProba: 0.05
 --- !u!114 &1740324419
 MonoBehaviour:
@@ -12856,6 +12921,12 @@ MonoBehaviour:
   PossibleActions: 00000000010000000200000003000000
   IsWorking: 1
   Difficulty: 1
+  BreakClip:
+    Audio: {fileID: 0}
+    Volume: 0
+  RepairClip:
+    Audio: {fileID: 0}
+    Volume: 0
   MeshRenderer: {fileID: 1852080589}
   MachineAnimator: {fileID: 0}
 --- !u!114 &1852080587
@@ -12961,7 +13032,7 @@ GameObject:
   - component: {fileID: 1866038051}
   - component: {fileID: 1866038050}
   - component: {fileID: 1866038049}
-  m_Layer: 18
+  m_Layer: 5
   m_Name: Canvas (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13867,7 +13938,7 @@ GameObject:
   - component: {fileID: 1977705937}
   - component: {fileID: 1977705936}
   - component: {fileID: 1977705935}
-  m_Layer: 15
+  m_Layer: 5
   m_Name: Canvas (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14232,7 +14303,7 @@ GameObject:
   - component: {fileID: 2038414268}
   - component: {fileID: 2038414267}
   - component: {fileID: 2038414266}
-  m_Layer: 16
+  m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}

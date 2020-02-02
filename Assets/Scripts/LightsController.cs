@@ -2,14 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SocialPlatforms;
+using UnityEngine.UI;
 
 public class LightsController : Toggled
 {
     public Light[] MachinesLight;
     public Light[] BathroomLight;
     public Light[] LaboLight;
+    public Image[] MachinesImages;
+    public Image[] BathroomImages;
+    public Image[] LaboImages;
 
+  
     private Light[][] _lights => new[] {MachinesLight, BathroomLight, LaboLight};
+    private Image[][] _images => new[] {MachinesImages, BathroomImages, LaboImages};
 
     public float LightsBugProba = 0.1f;
 
@@ -44,6 +50,10 @@ public class LightsController : Toggled
         {
             light.enabled = false;
         }
+        foreach (var image in _images[idx])
+        {
+            image.color = Color.black;
+        }
     }
 
     public override void Toggle()
@@ -59,6 +69,13 @@ public class LightsController : Toggled
             foreach (var light in lights)
             {
                 light.enabled = true;
+            }
+        }
+        foreach (var images in _images)
+        {
+            foreach (var image in images)
+            {
+                image.color = Color.white;
             }
         }
     }
