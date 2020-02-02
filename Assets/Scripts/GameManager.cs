@@ -80,7 +80,7 @@ public class GameManager : MonoBehaviour
         int estimatedSeconds = totalTimeInSec % 60;
 
         if (Time.time >= totalTimeInSec)
-            timerText.text = "Game over";
+            timerText.text = "Game over"; //Ajouter la méchanique de game over ici.
         else
         {
             if (estimatedSeconds < 10)
