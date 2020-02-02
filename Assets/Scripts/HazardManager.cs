@@ -33,7 +33,7 @@ public class HazardManager : MonoBehaviour
 
     private void Update()
     {
-        float percentageTimeLeft = Time.time / totalTimeInSec;
+        float percentageTimeLeft = Time.timeSinceLevelLoad / totalTimeInSec;
 
         interval = startInterval - difficultyCurve.Evaluate(percentageTimeLeft);
 
@@ -82,12 +82,12 @@ public class HazardManager : MonoBehaviour
 
     private void displayTimer()
     {
-        if (Time.time < 60)
+        if (Time.timeSinceLevelLoad < 60)
             timerText.text = System.Math.Round(Time.time, 2).ToString();
         else
         {
-            int minutes = (int)Time.time / 60;
-            int seconds = (int)Time.time % 60;
+            int minutes = (int)Time.timeSinceLevelLoad / 60;
+            int seconds = (int)Time.timeSinceLevelLoad % 60;
 
             if (seconds < 10)
                 timerText.text = minutes + " : 0" + seconds;

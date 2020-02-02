@@ -8412,7 +8412,7 @@ MonoBehaviour:
   Timer: 0
   TripDuration: 0
   Size: {fileID: 1402776549}
-  Manager: {fileID: 1740324416}
+  manage: {fileID: 1740324416}
   End: {fileID: 1920775091}
   clip: {fileID: 8300000, guid: f656c39d2a07f664e97ba863df47890d, type: 3}
 --- !u!114 &1261929370

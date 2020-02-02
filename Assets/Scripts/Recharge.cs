@@ -13,13 +13,13 @@ public class Recharge : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _nextRecharge = Time.time + RechargeRate;
+        _nextRecharge = Time.timeSinceLevelLoad + RechargeRate;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Time.time > _nextRecharge)
+        if (Time.timeSinceLevelLoad > _nextRecharge)
         {
             _canRecharge = true;
         }
@@ -33,7 +33,7 @@ public class Recharge : MonoBehaviour
             if (_canRecharge)
             {
                 p.Power += 1f;
-                _nextRecharge = Time.time + RechargeRate;
+                _nextRecharge = Time.timeSinceLevelLoad + RechargeRate;
                 _canRecharge = false;
             }
         }

@@ -8,7 +8,7 @@ using UnityEngine.SocialPlatforms;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class GameManager : MonoBehaviour
+public class GameManage : MonoBehaviour
 {
     public Machine[] Machines;
     public AudioClip music;
@@ -40,9 +40,9 @@ public class GameManager : MonoBehaviour
     
     void Start()
     {
-        TimeStart = Time.time;
+        TimeStart = Time.timeSinceLevelLoad;
         Debug.Log(TimeStart);
-        _nextHazardTiming = Time.time + HazardDelay + timeForFirstHazard;
+        _nextHazardTiming = Time.timeSinceLevelLoad + HazardDelay + timeForFirstHazard;
         SoundManager.instance.PlayAmbiance(ambiance, .8f);
         SoundManager.instance.PlayLoop(music);
         nbMedecine = 0;
@@ -61,10 +61,10 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Time.time > _nextHazardTiming)
+        if (Time.timeSinceLevelLoad > _nextHazardTiming)
         {
-            float percentageTimeLeft = Time.time / totalTimeInSec;
-            _nextHazardTiming = Time.time + HazardDelay - difficultyCurve.Evaluate(percentageTimeLeft);
+            float percentageTimeLeft = Time.timeSinceLevelLoad / totalTimeInSec;
+            _nextHazardTiming = Time.timeSinceLevelLoad + HazardDelay - difficultyCurve.Evaluate(percentageTimeLeft);
 
             for (int i = 0; i < silmutanousHazards; i++)
             {
@@ -107,11 +107,11 @@ public class GameManager : MonoBehaviour
         int estimatedMinutes = totalTimeInSec / 60;
         int estimatedSeconds = totalTimeInSec % 60;
         
-        if (Time.time >= startingEstimatedTime && totalTimeInSec <= (startingEstimatedTime + TWO_MINUTES) / 2)
+        if (Time.timeSinceLevelLoad >= startingEstimatedTime && totalTimeInSec <= (startingEstimatedTime + TWO_MINUTES) / 2)
         {
             SceneManager.LoadScene("MenuEnd1");
         }
-        else if (Time.time >= totalTimeInSec && totalTimeInSec >= (startingEstimatedTime + TWO_MINUTES) / 2)
+        else if (Time.timeSinceLevelLoad >= totalTimeInSec && totalTimeInSec >= (startingEstimatedTime + TWO_MINUTES) / 2)
         {
             String[] badEndings = { "MenuEnd2", "MenuEnd2" };
 
@@ -127,12 +127,12 @@ public class GameManager : MonoBehaviour
             else
                 estimatedTime += estimatedMinutes + ":" + estimatedSeconds;
 
-            if (Time.time < 60)
-                timerText.text = Math.Round(Time.time, 2).ToString() + estimatedTime;
+            if (Time.timeSinceLevelLoad < 60)
+                timerText.text = Math.Round(Time.timeSinceLevelLoad, 2).ToString() + estimatedTime;
             else
             {
-                int minutes = (int) Time.time / 60;
-                int seconds = (int) Time.time % 60;
+                int minutes = (int) Time.timeSinceLevelLoad / 60;
+                int seconds = (int) Time.timeSinceLevelLoad % 60;
 
                 if (seconds < 10)
                     timerText.text = minutes + ":0" + seconds + estimatedTime;
@@ -184,7 +184,7 @@ public class GameManager : MonoBehaviour
 
             if((value.Equals(Machines.GetValue(2)) ||
                 value.Equals(Machines.GetValue(3))) &&
-                Time.time >= medecineCreationTime &&
+                Time.timeSinceLevelLoad >= medecineCreationTime &&
                 Machines[i].IsWorking)
             {
                 nbMedecine++;

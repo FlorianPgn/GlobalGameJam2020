@@ -16,7 +16,7 @@ public class ProgessionController : MonoBehaviour
     public float Timer;
     public float TripDuration = 30f;
     public GameObject Size;
-    public GameManager Manager;
+    public GameManage manage;
     public Transform End;
     private float _endTime;
 
@@ -42,7 +42,7 @@ public class ProgessionController : MonoBehaviour
     void Update()
     {
  
-        float t = (Manager.TimeStart + Time.time) / Manager.totalTimeInSec;
+        float t = (manage.TimeStart + Time.time) / manage.totalTimeInSec;
         
         Zeppelin.transform.position = Vector3.Lerp(StartPos, StartPos + DifferencePos, t);
         if (t > 0.6f && !_musicPlayed)

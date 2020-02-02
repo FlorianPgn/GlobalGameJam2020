@@ -46,5 +46,6 @@ public class MenuTitle : MonoBehaviour
     public void Back()
     {
         SceneManager.LoadScene("MenuTitle");
+        
     }
 }
