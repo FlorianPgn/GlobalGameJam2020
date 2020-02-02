@@ -572,7 +572,7 @@ GameObject:
   - component: {fileID: 1341860816}
   - component: {fileID: 1341860815}
   m_Layer: 0
-  m_Name: TutorialLogic
+  m_Name: ControlLogic
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -8,6 +8,7 @@ public class SoundManager : MonoBehaviour
     public AudioSource fxSource;
     public AudioSource musicSource;
     public AudioSource musicSource2;
+    public AudioSource ambiance;
 
     private float _volume = 1f;
     private float _lowPitchRange = .95f;
@@ -51,9 +52,9 @@ public class SoundManager : MonoBehaviour
         }
     }
 
-    public void PlaySingle(AudioClip clip)
+    public void PlaySingle(AudioClip clip, float volume)
     {
-
+        fxSource.volume = volume;
         fxSource.clip = clip;
         fxSource.Play();
 
@@ -73,6 +74,14 @@ public class SoundManager : MonoBehaviour
         musicSource.clip = clip;
         musicSource.loop = true;
         musicSource.Play();
+    }
+
+    public void PlayAmbiance(AudioClip clip, float volume)
+    {
+        ambiance.clip = clip;
+        ambiance.volume = volume;
+        ambiance.loop = true;
+        ambiance.Play();
     }
 
 
