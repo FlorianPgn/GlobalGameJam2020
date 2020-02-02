@@ -86,6 +86,10 @@ public class SoundManager : MonoBehaviour
 
     public void Randomizefx(params Clip[] clips)
     {
+        if (clips.Length == 0)
+        {
+            return;
+        }
         int randomIndex = Random.Range(0, clips.Length);
         float randomPitch = Random.Range(_lowPitchRange, _highPitchRange);
         fxSource.pitch = randomPitch;
