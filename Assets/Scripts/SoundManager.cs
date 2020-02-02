@@ -111,6 +111,19 @@ public class SoundManager : MonoBehaviour
             musicSource.Play();
         }
 
+    }
+
+    public void PlayStop()
+    {
+        if (musicSource.isPlaying)
+        {
+            musicSource.Stop();
+        }
+        else
+        {
+            musicSource.Play();
+        }
+
 
 
     }

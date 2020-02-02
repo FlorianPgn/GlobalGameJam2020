@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
@@ -12,9 +13,27 @@ public class MainMenu : MonoBehaviour
         SoundManager.instance.PlayLoop(menuTheme);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Play()
     {
-        
+        SoundManager.instance.PlayStop();
+        SceneManager.LoadScene("PlayerCharac");
     }
+
+    public void Tutorial()
+    {
+        SoundManager.instance.PlayStop();
+        SceneManager.LoadScene("Tutorial");
+    }
+
+    public void Credits()
+    {
+        SoundManager.instance.PlayStop();
+        SceneManager.LoadScene("Credits");
+    }
+
+    public void QuitApp()
+    {
+        Application.Quit();
+    }
+
 }
