@@ -3,25 +3,29 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class MainMenu : MonoBehaviour
+public class MenuTitle : MonoBehaviour
 {
 
     public AudioClip menuTheme;
     // Start is called before the first frame update
     void Start()
     {
-        SoundManager.instance.PlayLoop(menuTheme);
+        //SoundManager.instance.PlayLoop(menuTheme);
     }
-
-    public void Play()
+    
+    public void StartGame()
     {
         SoundManager.instance.PlayStop();
         SceneManager.LoadScene("Main");
     }
 
+    public void Play()
+    {
+        SceneManager.LoadScene("MenuStory");
+    }
+    
     public void Controls()
     {
-        SoundManager.instance.PlayStop();
         SceneManager.LoadScene("MenuControls");
     }
 
@@ -33,6 +37,11 @@ public class MainMenu : MonoBehaviour
     public void Quit()
     {
         Application.Quit();
+    }
+    
+    public void Back()
+    {
+        SceneManager.LoadScene("MenuTitle");
     }
 
 }
