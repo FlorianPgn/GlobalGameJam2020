@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 7891956701729104908}
   - component: {fileID: 7891956701729104909}
   - component: {fileID: 7891956701729104910}
-  - component: {fileID: 7891956701729104919}
   - component: {fileID: 7891956701729104912}
   m_Layer: 0
   m_Name: Player2
@@ -63,7 +62,7 @@ Rigidbody:
   m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0
-  m_UseGravity: 0
+  m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 112
@@ -96,22 +95,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Id: 1
-  Joystick: {x: 0, y: 0}
-  OldJoystick: {x: 0, y: 0}
---- !u!136 &7891956701729104919
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7891956701729104918}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.32173327
-  m_Height: 1.4
-  m_Direction: 1
-  m_Center: {x: 0.003738751, y: 0.69, z: 0.107187204}
 --- !u!114 &7891956701729104912
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -350,6 +333,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7891956702834307128}
+  - component: {fileID: 2508487199231257337}
   m_Layer: 0
   m_Name: Model
   m_TagString: Untagged
@@ -373,6 +357,20 @@ Transform:
   m_Father: {fileID: 7891956701729104914}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &2508487199231257337
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7891956702834307135}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.29968575
+  m_Height: 1.4
+  m_Direction: 1
+  m_Center: {x: 0.003738761, y: 0.69, z: 0.08513969}
 --- !u!1001 &8260823648237821267
 PrefabInstance:
   m_ObjectHideFlags: 0

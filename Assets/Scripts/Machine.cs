@@ -46,7 +46,7 @@ public class Machine : Selectable
 
     public void Break()
     {
-        _actionType = PossibleActions[Random.Range(5, 6)];
+        _actionType = PossibleActions[Random.Range(0, 6)];
         _repairLevel = 0f;
         IsWorking = false;
     }
@@ -56,25 +56,25 @@ public class Machine : Selectable
         _repairLevel = Mathf.Clamp01(_repairLevel + value);
         if (_repairLevel == 1f)
         {
+            IsWorking = true;
             Difficulty -= 1;
             if (Difficulty > 0)
             {
                 Break();
             }
-            else
+            if (IsWorking)
             {
-                if (IsWorking)
-                {
-                    ResetMachine();
-                }
+                ResetMachine();
             }
+            
         }
     }
 
     private void ResetMachine()
     {
-        
+            
     }
+
     public override bool ReceiveInput(ActionType type)
     {
         throw new NotImplementedException();
