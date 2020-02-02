@@ -56,7 +56,7 @@ public class Machine : Selectable
 
     public void Break()
     {
-        _actionType = PossibleActions[Random.Range(0, 6)];
+        _actionType = PossibleActions[Random.Range(0, PossibleActions.Length)];
         _repairLevel = 0f;
         IsWorking = false;
     }
