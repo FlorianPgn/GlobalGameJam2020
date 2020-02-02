@@ -7,14 +7,13 @@ using Random = UnityEngine.Random;
 public class Machine : Selectable
 {
     public Color SelectColor;
-    public ActionType[] PossibleActions;
+    public ActionType[] PossibleActions = {ActionType.A, ActionType.B, ActionType.L, ActionType.X, ActionType.Y, ActionType.R, ActionType.LS, ActionType.RS};
 
     public bool IsWorking = true;
     public int Difficulty = 1;
     
-    private MeshRenderer _meshRenderer;
+    public MeshRenderer MeshRenderer;
     private Color _baseColor;
-
     private float _repairLevel = 1f;    
     private ActionType _actionType;
     
@@ -24,8 +23,15 @@ public class Machine : Selectable
     // Start is called before the first frame update
     void Start()
     {
-        _meshRenderer = GetComponent<MeshRenderer>();
-        _baseColor = _meshRenderer.material.color;
+        if (MeshRenderer == null)
+        {
+            MeshRenderer = GetComponent<MeshRenderer>();        
+        }
+        
+        if (MeshRenderer != null)
+        {
+            _baseColor = MeshRenderer.material.color;        
+        }
         IsWorking = true;
     }
 
@@ -54,6 +60,7 @@ public class Machine : Selectable
     private void Repair(float value)
     {
         _repairLevel = Mathf.Clamp01(_repairLevel + value);
+        Debug.Log("Repair", gameObject);
         if (_repairLevel == 1f)
         {
             IsWorking = true;
@@ -88,7 +95,7 @@ public class Machine : Selectable
                 _pumpedLeft = true;
                 _pumpedRight = false;
                 _actionType = ActionType.R;
-                Repair(value / 5);
+                Repair(value / 5f);
                 return true;
             }
         
@@ -97,7 +104,7 @@ public class Machine : Selectable
                 _pumpedLeft = false;
                 _pumpedRight = true;
                 _actionType = ActionType.L;
-                Repair(value / 5);
+                Repair(value / 5f);
                 return true;
             }
         
@@ -117,11 +124,17 @@ public class Machine : Selectable
 
     protected override void OnSelect()
     {
-        _meshRenderer.material.color = SelectColor;
+        if (MeshRenderer != null)
+        {
+            MeshRenderer.material.color = SelectColor;
+        }
     }
 
     protected override void OnUnselect()
     {
-        _meshRenderer.material.color = _baseColor;
+        if (MeshRenderer != null)
+        {
+            MeshRenderer.material.color = _baseColor;
+        }
     }
 }
