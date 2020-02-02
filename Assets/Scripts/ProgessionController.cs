@@ -34,7 +34,7 @@ public class ProgessionController : MonoBehaviour
         Timer += Time.deltaTime;
  
         float t = (Manager.TimeStart + Time.time) / Manager.totalTimeInSec;
-        Debug.Log(t + " " + Manager.TimeStart+" "+ Manager.totalTimeInSec);
+        
         Zeppelin.transform.position = StartPos + DifferencePos * t;
     }
 }
