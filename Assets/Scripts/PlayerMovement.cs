@@ -12,8 +12,12 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody body;
     public Transform PlayerModel;
 
+    public Animator PlayerController;
+    
     void Awake () {
 		body = GetComponent<Rigidbody>();
+        //PlayerController = GetComponent<Animator>();
+        
 	}
 
     private void FixedUpdate()
@@ -27,9 +31,13 @@ public class PlayerMovement : MonoBehaviour
     public void Move(float h, float v)
     {
         Vector2 playerInput = new Vector2(h, v);
+        
         playerInput = Vector2.ClampMagnitude(playerInput, 1f) * MaxSpeed;
-        if(Math.Abs(playerInput.x) > float.Epsilon || Math.Abs(playerInput.y) > float.Epsilon)
+        if (playerInput.magnitude > float.Epsilon)
+        {
             PlayerModel.rotation = Quaternion.Slerp(PlayerModel.rotation, Quaternion.LookRotation(new Vector3(playerInput.x, 0, playerInput.y)), 0.15f);
+        }
+        PlayerController.SetBool("Move", playerInput.magnitude > float.Epsilon);
         _desiredVelocity = new Vector3(playerInput.x, 0f, playerInput.y);
     }
 }

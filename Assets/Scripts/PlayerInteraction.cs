@@ -10,6 +10,9 @@ public class PlayerInteraction : MonoBehaviour
 
     public float RepairStrength = 0.25f;
     public float MaxPower = 10f;
+    
+    public Animator PlayerController;
+    
     public float Power
     {
         get => _power;
@@ -28,9 +31,10 @@ public class PlayerInteraction : MonoBehaviour
     {
         if (SelectedObject != null)
         {
-            if (SelectedObject.ReceiveInput(type, RepairStrength * (_power/10f)))
+            if (SelectedObject.ReceiveInput(type, RepairStrength * (_power/MaxPower)))
             {
-                Debug.Log(RepairStrength +" "+ _power);
+                //Debug.Log(RepairStrength +" "+ _power);
+                PlayerController.SetTrigger("Repair");
                 Power -= RepairStrength;
             }
         }

@@ -13,18 +13,23 @@ public class RepairUI : MonoBehaviour
         public ActionType ActionType;
     }
 
-    public Machine Machine;
+    private Machine _machine;
     
     public RepairActionSprite[] RepairActionSprites;
     
     public Image RepairAction;
     public Image RepairBar;
 
+    private void Start()
+    {
+        _machine = GetComponent<Machine>();
+    }
+
     public void Update()
     {
-        ShowRepairLevel(Machine.GetRepairLevel());
-        if (!Machine.IsWorking && RepairAction != null) SetRepairAction(Machine.GetActionType());
+        ShowRepairLevel(_machine.GetRepairLevel());
         CheckPump();
+        if (!_machine.IsWorking && RepairAction != null) SetRepairAction(_machine.GetActionType());
         //
     }
 
@@ -48,9 +53,9 @@ public class RepairUI : MonoBehaviour
 
     private void CheckPump()
     {
-        if (Machine.GetActionType() == ActionType.L || Machine.GetActionType() == ActionType.R)
+        if (_machine.GetActionType() == ActionType.L || _machine.GetActionType() == ActionType.R)
         {
-            SetRepairAction(Machine.GetActionType());
+            SetRepairAction(_machine.GetActionType());
         }
     }
 }

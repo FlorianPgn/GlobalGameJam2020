@@ -1,18 +1,26 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class TutorialMenu : MonoBehaviour
 {
-    // Start is called before the first frame update
+
+    public AudioClip music;
+    public AudioClip clickSound;
+
+
     void Start()
     {
-        
+        SoundManager.instance.PlayLoop(music);
     }
 
-    // Update is called once per frame
-    void Update()
+
+    public void Back()
     {
-        
+        SoundManager.instance.PlayStop();
+        SoundManager.instance.PlaySingle(clickSound, 1f);
+        SceneManager.LoadScene("Menu");
     }
+
 }

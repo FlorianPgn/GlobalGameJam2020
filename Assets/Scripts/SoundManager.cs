@@ -8,14 +8,14 @@ public class SoundManager : MonoBehaviour
     public AudioSource fxSource;
     public AudioSource musicSource;
     public AudioSource musicSource2;
+    public AudioSource ambiance;
 
     private float _volume = 1f;
     private float _lowPitchRange = .95f;
     private float _highPitchRange = 1.85f;
     private bool reverse;
-
-
-
+    
+    
     private void Awake()
     {
         if (instance == null)
@@ -51,9 +51,9 @@ public class SoundManager : MonoBehaviour
         }
     }
 
-    public void PlaySingle(AudioClip clip)
+    public void PlaySingle(AudioClip clip, float volume)
     {
-
+        fxSource.volume = volume;
         fxSource.clip = clip;
         fxSource.Play();
 
@@ -75,15 +75,22 @@ public class SoundManager : MonoBehaviour
         musicSource.Play();
     }
 
+    public void PlayAmbiance(AudioClip clip, float volume)
+    {
+        ambiance.clip = clip;
+        ambiance.volume = volume;
+        ambiance.loop = true;
+        ambiance.Play();
+    }
 
 
-
-    public void Randomizefx(params AudioClip[] clips)
+    public void Randomizefx(params Clip[] clips)
     {
         int randomIndex = Random.Range(0, clips.Length);
         float randomPitch = Random.Range(_lowPitchRange, _highPitchRange);
         fxSource.pitch = randomPitch;
-        fxSource.clip = clips[randomIndex];
+        fxSource.clip = clips[randomIndex].Audio;
+        fxSource.volume = clips[randomIndex].Volume;
         fxSource.Play();
     }
 

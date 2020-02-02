@@ -6,6 +6,8 @@ using Random = UnityEngine.Random;
 
 public class Machine : Selectable
 {
+    public SoundEffect.Type[] Types;
+    
     public Color SelectColor;
     public ActionType[] PossibleActions = {ActionType.A, ActionType.B, ActionType.L, ActionType.X, ActionType.Y, ActionType.R, ActionType.LS, ActionType.RS};
 
@@ -16,6 +18,7 @@ public class Machine : Selectable
     private Color _baseColor;
     private float _repairLevel = 1f;    
     private ActionType _actionType;
+    public Animator MachineAnimator;
     
     private bool _pumpedLeft;
     private bool _pumpedRight;
@@ -33,11 +36,14 @@ public class Machine : Selectable
             _baseColor = MeshRenderer.material.color;        
         }
         IsWorking = true;
+        if(MachineAnimator == null)
+            MachineAnimator = GetComponent<Animator>();
     }
 
     private void Update()
     {
-        
+        if(MachineAnimator != null)
+            MachineAnimator.SetBool("Broken", !IsWorking);
     }
 
     public float GetRepairLevel()
@@ -52,15 +58,17 @@ public class Machine : Selectable
 
     public void Break()
     {
-        _actionType = PossibleActions[Random.Range(0, 6)];
+        _actionType = PossibleActions[Random.Range(0, PossibleActions.Length)];
         _repairLevel = 0f;
         IsWorking = false;
+        SoundManager.instance.Randomizefx(SoundEffect.Instance.GetTypeSounds(SoundEffect.Type.BREAK));
     }
 
     private void Repair(float value)
     {
         _repairLevel = Mathf.Clamp01(_repairLevel + value);
         Debug.Log("Repair", gameObject);
+        SoundManager.instance.Randomizefx(SoundEffect.Instance.GetTypeSounds(Types));
         if (_repairLevel == 1f)
         {
             IsWorking = true;
@@ -80,9 +88,9 @@ public class Machine : Selectable
 
     private void ResetMachine()
     {
-            
+        SoundManager.instance.Randomizefx(SoundEffect.Instance.GetTypeSounds(SoundEffect.Type.SUCCESS));
     }
-
+    
     public override bool ReceiveInput(ActionType type)
     {
         throw new NotImplementedException();
@@ -97,7 +105,7 @@ public class Machine : Selectable
                 _pumpedLeft = true;
                 _pumpedRight = false;
                 _actionType = ActionType.R;
-                Repair(value / 5f);
+                Repair(value / 2f);
                 return true;
             }
         
@@ -106,7 +114,7 @@ public class Machine : Selectable
                 _pumpedLeft = false;
                 _pumpedRight = true;
                 _actionType = ActionType.L;
-                Repair(value / 5f);
+                Repair(value / 2f);
                 return true;
             }
         
