@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -15,6 +16,8 @@ public class GameManager : MonoBehaviour
     public int totalTimeInSec;
     [Range(0f, 0.50f)]
     public float speedLoss = .20f;
+    [Range(0, 10)]
+    public int timeBetweenSpeedLoss = 3;
 
     public Text timerText;
     // Start is called before the first frame update
@@ -22,10 +25,13 @@ public class GameManager : MonoBehaviour
     private float _nextHazardTiming;
 
     private List<int> _workingMachines;
+
+    private const int SIX_MINUTES = 6 * 60;
     
     void Start()
     {
         _nextHazardTiming = Time.time + HazardDelay;
+        InvokeRepeating("findBrokenMachine", 0, timeBetweenSpeedLoss);
     }
 
     // Update is called once per frame
@@ -41,7 +47,7 @@ public class GameManager : MonoBehaviour
                 BreakMachine();
             }
         }
-
+        
         displayTimer();
     }
 
@@ -61,7 +67,7 @@ public class GameManager : MonoBehaviour
         {
             return null;
         }
-        int idx = Random.Range(0, workingMachines.Length);
+        int idx = UnityEngine.Random.Range(0, workingMachines.Length);
         return workingMachines[idx];
     }
 
@@ -87,6 +93,27 @@ public class GameManager : MonoBehaviour
                 timerText.text = minutes + ":0" + seconds + estimatedTime;
             else
                 timerText.text = minutes + ":" + seconds + estimatedTime;
+        }
+    }
+
+    private void findBrokenMachine()
+    {
+        int i = 0;
+        Machine[] nonWorkingMachines = Machines.Where(machine => !machine.IsWorking).ToArray();
+
+        if (nonWorkingMachines.Length != 0)
+        {
+            while (nonWorkingMachines[i])
+            {
+                totalTimeInSec = (int)(totalTimeInSec * (1 + speedLoss));
+                i++;
+
+                if (totalTimeInSec > SIX_MINUTES)
+                    totalTimeInSec = SIX_MINUTES;
+
+                if (i > nonWorkingMachines.Length)
+                    break;
+            }
         }
     }
 }
