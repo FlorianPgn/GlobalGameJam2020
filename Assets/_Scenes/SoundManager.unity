@@ -490,6 +490,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6007932141825148076, guid: 2e4230c5709d9934ba76de0285fead8b,
+        type: 3}
+      propertyPath: BypassReverbZones
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6007932141825148078, guid: 2e4230c5709d9934ba76de0285fead8b,
         type: 3}
       propertyPath: ambiance

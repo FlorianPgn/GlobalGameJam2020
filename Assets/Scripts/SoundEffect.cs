@@ -8,7 +8,7 @@ public class SoundEffect : MonoBehaviour
 
     public static SoundEffect Instance = null;
     
-    public enum Type {PLUMBER, HAMMER, DRILL, SUCCESS, BREAK}
+    public enum Type {PLUMBER, HAMMER, DRILL, SUCCESS, BREAK, EVENT,MACHINE}
     
     [System.Serializable]
     public struct SoundLink

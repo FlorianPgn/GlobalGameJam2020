@@ -8,6 +8,8 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     public Machine[] Machines;
+    public AudioClip music;
+    public AudioClip ambiance;
     [Range(0f, 10f)]
     public float HazardDelay = 3f;
     public int silmutanousHazards;
@@ -26,6 +28,8 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         _nextHazardTiming = Time.time + HazardDelay;
+        SoundManager.instance.PlayAmbiance(ambiance, .8f);
+        SoundManager.instance.PlayLoop(music);
     }
 
     // Update is called once per frame
