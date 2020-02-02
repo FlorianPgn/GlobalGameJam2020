@@ -10720,6 +10720,8 @@ MonoBehaviour:
   - {fileID: 804127393}
   - {fileID: 1256014304}
   - {fileID: 477990507}
+  music: {fileID: 8300000, guid: 1839cf4a8415c274f97d681f2d5aef23, type: 3}
+  ambiance: {fileID: 8300000, guid: 28ef577117d0df848b266f1af79ed269, type: 3}
   HazardDelay: 3
   silmutanousHazards: 1
   difficultyCurve:
@@ -10800,8 +10802,48 @@ MonoBehaviour:
   Links:
   - SoundType: 2
     Clips:
-    - Audio: {fileID: 8300000, guid: 09d0b73f3a7630044aed5dab4bf03832, type: 3}
+    - Audio: {fileID: 8300000, guid: d3eeffbbb9d12ac46861d3205a9bcf69, type: 3}
+      Volume: 0.799
+  - SoundType: 1
+    Clips:
+    - Audio: {fileID: 8300000, guid: b56e027d0043db443b2c1b10350a6be1, type: 3}
+      Volume: 0.799
+    - Audio: {fileID: 8300000, guid: d07510902690baf428938a859e9f7f75, type: 3}
       Volume: 1
+  - SoundType: 0
+    Clips:
+    - Audio: {fileID: 8300000, guid: 095dd309c36835047ae147fcfe7466df, type: 3}
+      Volume: 0.77
+  - SoundType: 4
+    Clips:
+    - Audio: {fileID: 8300000, guid: a6e4d1ce24c73b74ba5fed204c137b3f, type: 3}
+      Volume: 0.78
+    - Audio: {fileID: 8300000, guid: eee129fcac2434748839d3ddccc6dccf, type: 3}
+      Volume: 0.794
+    - Audio: {fileID: 8300000, guid: b71438b02491c134a812498d29f1eb22, type: 3}
+      Volume: 0.804
+    - Audio: {fileID: 8300000, guid: 265c69c81a705a14e99312e35d231b0f, type: 3}
+      Volume: 0.794
+    - Audio: {fileID: 8300000, guid: 1826fd8392b67944895a77f2ed45493a, type: 3}
+      Volume: 0.784
+    - Audio: {fileID: 8300000, guid: cdb3de0514a1ac748b683160fb8795f3, type: 3}
+      Volume: 0.784
+  - SoundType: 5
+    Clips:
+    - Audio: {fileID: 8300000, guid: cb0a814e2c0a84d498e48d7322b4deec, type: 3}
+      Volume: 0.789
+    - Audio: {fileID: 8300000, guid: 719a48f89bbe6224d9635c6fb573df9e, type: 3}
+      Volume: 0.928
+  - SoundType: 3
+    Clips:
+    - Audio: {fileID: 8300000, guid: 34576638ae7c72a46b338f80cbf5e73c, type: 3}
+      Volume: 0.713
+  - SoundType: 6
+    Clips:
+    - Audio: {fileID: 8300000, guid: af9b711d5be4d204984b2c93d112adef, type: 3}
+      Volume: 0.578
+    - Audio: {fileID: 8300000, guid: a38a1d41054d6dc4dbe5fd387f413f39, type: 3}
+      Volume: 0.602
 --- !u!1 &1741344457
 GameObject:
   m_ObjectHideFlags: 0
@@ -15724,7 +15766,7 @@ MonoBehaviour:
       colorBlindnessStrength: 1
   m_Resources: {fileID: 11400000, guid: d82512f9c8e5d4a4d938b575d47f88d4, type: 2}
   m_ShowToolkit: 0
-  m_ShowCustomSorter: 0
+  m_ShowCustomSorter: 1
   breakBeforeColorGrading: 0
   m_BeforeTransparentBundles: []
   m_BeforeStackBundles: []
