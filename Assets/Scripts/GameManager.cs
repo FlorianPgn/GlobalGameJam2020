@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -17,19 +18,28 @@ public class GameManager : MonoBehaviour
     public int totalTimeInSec;
     [Range(0f, 0.50f)]
     public float speedLoss = .20f;
+    [Range(0, 10)]
+    public int timeBetweenSpeedLoss = 3;
 
     public Text timerText;
-    // Start is called before the first frame update
 
     private float _nextHazardTiming;
-
+    private int startingEstimatedTime;
+    
     private List<int> _workingMachines;
+
+    private const int SIX_MINUTES = 6 * 60;
     
     void Start()
     {
         _nextHazardTiming = Time.time + HazardDelay;
         SoundManager.instance.PlayAmbiance(ambiance, .8f);
         SoundManager.instance.PlayLoop(music);
+
+        startingEstimatedTime = totalTimeInSec;
+        InvokeRepeating("findBrokenMachine", 0, timeBetweenSpeedLoss);
+        InvokeRepeating("autoRepair", 0, timeBetweenSpeedLoss * 1.5f);
+
     }
 
     // Update is called once per frame
@@ -45,7 +55,7 @@ public class GameManager : MonoBehaviour
                 BreakMachine();
             }
         }
-
+        
         displayTimer();
     }
 
@@ -65,32 +75,66 @@ public class GameManager : MonoBehaviour
         {
             return null;
         }
-        int idx = Random.Range(0, workingMachines.Length);
+        int idx = UnityEngine.Random.Range(0, workingMachines.Length);
         return workingMachines[idx];
     }
 
     private void displayTimer()
     {
         string estimatedTime = "\n" + "Estimated travel time is: ";
-        int estimatedMinutes = (int)totalTimeInSec / 60;
-        int estimatedSeconds = (int)totalTimeInSec % 60;
+        int estimatedMinutes = totalTimeInSec / 60;
+        int estimatedSeconds = totalTimeInSec % 60;
 
-        if (estimatedSeconds < 10)
-            estimatedTime += estimatedMinutes + ":0" + estimatedSeconds;
-        else
-            estimatedTime += estimatedMinutes + ":" + estimatedSeconds;
-
-        if (Time.time < 60)
-            timerText.text = System.Math.Round(Time.time, 2).ToString() + estimatedTime;
+        if (Time.time >= totalTimeInSec)
+            timerText.text = "Game over"; //Ajouter la méchanique de game over ici.
         else
         {
-            int minutes = (int)Time.time / 60;
-            int seconds = (int)Time.time % 60;
-
-            if (seconds < 10)
-                timerText.text = minutes + ":0" + seconds + estimatedTime;
+            if (estimatedSeconds < 10)
+                estimatedTime += estimatedMinutes + ":0" + estimatedSeconds;
             else
-                timerText.text = minutes + ":" + seconds + estimatedTime;
+                estimatedTime += estimatedMinutes + ":" + estimatedSeconds;
+
+            if (Time.time < 60)
+                timerText.text = Math.Round(Time.time, 2).ToString() + estimatedTime;
+            else
+            {
+                int minutes = (int)Time.time / 60;
+                int seconds = (int)Time.time % 60;
+
+                if (seconds < 10)
+                    timerText.text = minutes + ":0" + seconds + estimatedTime;
+                else
+                    timerText.text = minutes + ":" + seconds + estimatedTime;
+            }
         }
+    }
+
+    private void findBrokenMachine()
+    {
+        int i = 0;
+        Machine[] nonWorkingMachines = Machines.Where(machine => !machine.IsWorking).ToArray();
+
+        if (nonWorkingMachines.Length != 0)
+        {
+            while (nonWorkingMachines[i])
+            {
+                totalTimeInSec = (int)(totalTimeInSec * (1 + speedLoss));
+                i++;
+
+                if (totalTimeInSec > SIX_MINUTES)
+                    totalTimeInSec = SIX_MINUTES;
+
+                if (i >= nonWorkingMachines.Length)
+                    break;
+            }
+        }
+    }
+
+    private void autoRepair()
+    {
+        totalTimeInSec -= (int)(totalTimeInSec * (speedLoss / 2));
+
+        if (totalTimeInSec < startingEstimatedTime)
+            totalTimeInSec = startingEstimatedTime;
     }
 }
