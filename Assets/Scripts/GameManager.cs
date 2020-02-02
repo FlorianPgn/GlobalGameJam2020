@@ -22,15 +22,16 @@ public class GameManager : MonoBehaviour
     public Text timerText;
 
     private float _nextHazardTiming;
-
+    private int startingEstimatedTime;
+    
     private List<int> _workingMachines;
 
     private const int SIX_MINUTES = 6 * 60;
-    private const int FOUR_MINUTES = 4 * 60;
     
     void Start()
     {
         _nextHazardTiming = Time.time + HazardDelay;
+        startingEstimatedTime = totalTimeInSec;
         InvokeRepeating("findBrokenMachine", 0, timeBetweenSpeedLoss);
         InvokeRepeating("autoRepair", 0, timeBetweenSpeedLoss * 1.5f);
     }
@@ -78,22 +79,27 @@ public class GameManager : MonoBehaviour
         int estimatedMinutes = totalTimeInSec / 60;
         int estimatedSeconds = totalTimeInSec % 60;
 
-        if (estimatedSeconds < 10)
-            estimatedTime += estimatedMinutes + ":0" + estimatedSeconds;
-        else
-            estimatedTime += estimatedMinutes + ":" + estimatedSeconds;
-
-        if (Time.time < 60)
-            timerText.text = Math.Round(Time.time, 2).ToString() + estimatedTime;
+        if (Time.time >= totalTimeInSec)
+            timerText.text = "Game over";
         else
         {
-            int minutes = (int)Time.time / 60;
-            int seconds = (int)Time.time % 60;
-
-            if (seconds < 10)
-                timerText.text = minutes + ":0" + seconds + estimatedTime;
+            if (estimatedSeconds < 10)
+                estimatedTime += estimatedMinutes + ":0" + estimatedSeconds;
             else
-                timerText.text = minutes + ":" + seconds + estimatedTime;
+                estimatedTime += estimatedMinutes + ":" + estimatedSeconds;
+
+            if (Time.time < 60)
+                timerText.text = Math.Round(Time.time, 2).ToString() + estimatedTime;
+            else
+            {
+                int minutes = (int)Time.time / 60;
+                int seconds = (int)Time.time % 60;
+
+                if (seconds < 10)
+                    timerText.text = minutes + ":0" + seconds + estimatedTime;
+                else
+                    timerText.text = minutes + ":" + seconds + estimatedTime;
+            }
         }
     }
 
@@ -122,7 +128,7 @@ public class GameManager : MonoBehaviour
     {
         totalTimeInSec -= (int)(totalTimeInSec * (speedLoss / 2));
 
-        if (totalTimeInSec < FOUR_MINUTES)
-            totalTimeInSec = FOUR_MINUTES;
+        if (totalTimeInSec < startingEstimatedTime)
+            totalTimeInSec = startingEstimatedTime;
     }
 }
