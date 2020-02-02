@@ -55,7 +55,7 @@ public class LightsController : Toggled
     private void TurnOffLights()
     {
         _lightBugHappening = true;
-        SoundManager.instance.PlaySingle(Clip, 0.25f);
+        SoundManager.instance.PlaySingle(Clip, 0.6f);
         int idx = Random.Range(0, _lights.Length);
         foreach (var light in _lights[idx])
         {

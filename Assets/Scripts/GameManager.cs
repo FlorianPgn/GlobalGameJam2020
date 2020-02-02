@@ -6,6 +6,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.SocialPlatforms;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -23,11 +24,13 @@ public class GameManager : MonoBehaviour
     public int timeBetweenSpeedLoss = 3;
     [Range(0, 30)]
     public int timeForFirstHazard;
+    public float medecineCreationTime;
 
     public Text timerText;
 
     private float _nextHazardTiming;
     private int startingEstimatedTime;
+    private int nbMedecine;
     
     private List<int> _workingMachines;
 
@@ -41,10 +44,12 @@ public class GameManager : MonoBehaviour
         _nextHazardTiming = Time.time + HazardDelay + timeForFirstHazard;
         SoundManager.instance.PlayAmbiance(ambiance, .8f);
         SoundManager.instance.PlayLoop(music);
+        nbMedecine = 0;
 
         startingEstimatedTime = totalTimeInSec;
         InvokeRepeating("findBrokenMachine", 0, timeBetweenSpeedLoss);
         InvokeRepeating("autoRepair", 0, timeBetweenSpeedLoss * 1.5f);
+        InvokeRepeating("CreateMedecine", 0, medecineCreationTime);
 
         for (int i = 0; i < silmutanousHazards; i++)
         {
@@ -65,7 +70,7 @@ public class GameManager : MonoBehaviour
                 BreakMachine();
             }
         }
-
+        
         displayTimer();
     }
 
@@ -100,12 +105,19 @@ public class GameManager : MonoBehaviour
         string estimatedTime = "\n" + "Estimated travel time is: ";
         int estimatedMinutes = totalTimeInSec / 60;
         int estimatedSeconds = totalTimeInSec % 60;
-
-        if (Time.time >= totalTimeInSec)
+        
+        if (Time.time >= startingEstimatedTime && totalTimeInSec <= (startingEstimatedTime + TWO_MINUTES) / 2)
         {
-            //Ajouter la méchanique de game over ici.
-            timerText.text = "Game over";
-            SceneManager.LoadScene("MenuEnd3");
+            SceneManager.LoadScene("MenuEnd1");
+        }
+        else if (Time.time >= totalTimeInSec && totalTimeInSec >= (startingEstimatedTime + TWO_MINUTES) / 2)
+        {
+            String[] badEndings = { "MenuEnd2", "MenuEnd2" };
+
+            int randomBadEnding = UnityEngine.Random.Range(0, 1);
+
+            SceneManager.LoadScene(badEndings[randomBadEnding]);
+
         }
         else
         {
@@ -133,7 +145,7 @@ public class GameManager : MonoBehaviour
     {
         int i = 0;
         Machine[] nonWorkingMachines = Machines.Where(machine => !machine.IsWorking).ToArray();
-
+        
         if (nonWorkingMachines.Length != 0)
         {
             while (nonWorkingMachines[i])
@@ -147,6 +159,9 @@ public class GameManager : MonoBehaviour
                 if (i >= nonWorkingMachines.Length)
                     break;
             }
+
+            if (totalTimeInSec >= startingEstimatedTime + TWO_MINUTES)
+                totalTimeInSec = startingEstimatedTime + TWO_MINUTES;
         }
     }
 
@@ -156,5 +171,25 @@ public class GameManager : MonoBehaviour
 
         if (totalTimeInSec < startingEstimatedTime)
             totalTimeInSec = startingEstimatedTime;
+    }
+
+    private void CreateMedecine()
+    {
+        int i = 0;
+
+        while (i < Machines.Length)
+        {
+            System.Object value = Machines.GetValue(i);
+
+            if((value.Equals(Machines.GetValue(2)) ||
+                value.Equals(Machines.GetValue(3))) &&
+                Time.time >= medecineCreationTime &&
+                Machines[i].IsWorking)
+            {
+                nbMedecine++;
+            }
+
+            i++;
+        }
     }
 }
