@@ -2478,6 +2478,75 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!1001 &328409326
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 6007932141825148067, guid: 2e4230c5709d9934ba76de0285fead8b,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6007932141825148067, guid: 2e4230c5709d9934ba76de0285fead8b,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6007932141825148067, guid: 2e4230c5709d9934ba76de0285fead8b,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6007932141825148067, guid: 2e4230c5709d9934ba76de0285fead8b,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6007932141825148067, guid: 2e4230c5709d9934ba76de0285fead8b,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6007932141825148067, guid: 2e4230c5709d9934ba76de0285fead8b,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6007932141825148067, guid: 2e4230c5709d9934ba76de0285fead8b,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6007932141825148067, guid: 2e4230c5709d9934ba76de0285fead8b,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6007932141825148067, guid: 2e4230c5709d9934ba76de0285fead8b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6007932141825148067, guid: 2e4230c5709d9934ba76de0285fead8b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6007932141825148067, guid: 2e4230c5709d9934ba76de0285fead8b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6007932141825148079, guid: 2e4230c5709d9934ba76de0285fead8b,
+        type: 3}
+      propertyPath: m_Name
+      value: SoundManager
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2e4230c5709d9934ba76de0285fead8b, type: 3}
 --- !u!1 &331870713
 GameObject:
   m_ObjectHideFlags: 0
@@ -2576,6 +2645,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9533672eb3fa42e4baae201ddf330064, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Types: 02000000
   SelectColor: {r: 0.509434, g: 0.509434, b: 0.509434, a: 1}
   PossibleActions: 000000000100000002000000030000000400000005000000
   IsWorking: 1
@@ -2646,6 +2716,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9533672eb3fa42e4baae201ddf330064, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Types: 02000000
   SelectColor: {r: 0.509434, g: 0.509434, b: 0.509434, a: 1}
   PossibleActions: 06000000070000000100000003000000
   IsWorking: 1
@@ -3172,6 +3243,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9533672eb3fa42e4baae201ddf330064, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Types: 02000000
   SelectColor: {r: 0.509434, g: 0.509434, b: 0.509434, a: 1}
   PossibleActions: 06000000070000000400000005000000
   IsWorking: 1
@@ -3613,6 +3685,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9533672eb3fa42e4baae201ddf330064, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Types: 02000000
   SelectColor: {r: 0.509434, g: 0.509434, b: 0.509434, a: 1}
   PossibleActions: 040000000500000000000000
   IsWorking: 1
@@ -4958,6 +5031,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9533672eb3fa42e4baae201ddf330064, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Types: 02000000
   SelectColor: {r: 0.509434, g: 0.509434, b: 0.509434, a: 1}
   PossibleActions: 060000000700000002000000
   IsWorking: 1
@@ -6669,7 +6743,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 7.590027, y: -3.669983}
+  m_AnchoredPosition: {x: 7.590027, y: -3.670044}
   m_SizeDelta: {x: 1600, y: 300}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1153509067
@@ -7332,6 +7406,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9533672eb3fa42e4baae201ddf330064, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Types: 02000000
   SelectColor: {r: 0.509434, g: 0.509434, b: 0.509434, a: 1}
   PossibleActions: 0000000001000000020000000300000004000000050000000600000007000000
   IsWorking: 1
@@ -8569,6 +8644,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9533672eb3fa42e4baae201ddf330064, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Types: 02000000
   SelectColor: {r: 0.509434, g: 0.509434, b: 0.509434, a: 1}
   PossibleActions: 020000000300000004000000
   IsWorking: 1
@@ -10615,6 +10691,7 @@ GameObject:
   - component: {fileID: 1740324417}
   - component: {fileID: 1740324416}
   - component: {fileID: 1740324418}
+  - component: {fileID: 1740324419}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -10708,6 +10785,23 @@ MonoBehaviour:
   - {fileID: 29798735172607512}
   - {fileID: 29798735713260978}
   LightsBugProba: 0.05
+--- !u!114 &1740324419
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1740324415}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ac4228358ff71245841f89aa21e1f28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Links:
+  - SoundType: 2
+    Clips:
+    - Audio: {fileID: 8300000, guid: 09d0b73f3a7630044aed5dab4bf03832, type: 3}
+      Volume: 1
 --- !u!1 &1741344457
 GameObject:
   m_ObjectHideFlags: 0
@@ -11550,6 +11644,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9533672eb3fa42e4baae201ddf330064, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Types: 02000000
   SelectColor: {r: 0.509434, g: 0.509434, b: 0.509434, a: 1}
   PossibleActions: 00000000010000000200000003000000
   IsWorking: 1

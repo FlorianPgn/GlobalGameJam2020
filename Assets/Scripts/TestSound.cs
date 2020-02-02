@@ -18,13 +18,13 @@ public class TestSound : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space)){
 
-            SoundManager.instance.Randomizefx(drillSound);
+            // SoundManager.instance.Randomizefx(drillSound);
 
         }
 
         if (Input.GetKeyDown(KeyCode.KeypadEnter))
         {
-            SoundManager.instance.Randomizefx(drillSoundEnd);
+            // SoundManager.instance.Randomizefx(drillSoundEnd);
         }
         
     }

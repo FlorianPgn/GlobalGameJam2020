@@ -6,6 +6,8 @@ using Random = UnityEngine.Random;
 
 public class Machine : Selectable
 {
+    public SoundEffect.Type[] Types;
+    
     public Color SelectColor;
     public ActionType[] PossibleActions = {ActionType.A, ActionType.B, ActionType.L, ActionType.X, ActionType.Y, ActionType.R, ActionType.LS, ActionType.RS};
 
@@ -59,12 +61,14 @@ public class Machine : Selectable
         _actionType = PossibleActions[Random.Range(0, PossibleActions.Length)];
         _repairLevel = 0f;
         IsWorking = false;
+        SoundManager.instance.Randomizefx(SoundEffect.Instance.GetTypeSounds(SoundEffect.Type.BREAK));
     }
 
     private void Repair(float value)
     {
         _repairLevel = Mathf.Clamp01(_repairLevel + value);
         Debug.Log("Repair", gameObject);
+        SoundManager.instance.Randomizefx(SoundEffect.Instance.GetTypeSounds(Types));
         if (_repairLevel == 1f)
         {
             IsWorking = true;
@@ -83,7 +87,7 @@ public class Machine : Selectable
 
     private void ResetMachine()
     {
-            
+        SoundManager.instance.Randomizefx(SoundEffect.Instance.GetTypeSounds(SoundEffect.Type.SUCCESS));
     }
     
     public override bool ReceiveInput(ActionType type)

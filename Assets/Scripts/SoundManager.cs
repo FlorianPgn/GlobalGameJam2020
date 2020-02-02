@@ -14,9 +14,8 @@ public class SoundManager : MonoBehaviour
     private float _lowPitchRange = .95f;
     private float _highPitchRange = 1.85f;
     private bool reverse;
-
-
-
+    
+    
     private void Awake()
     {
         if (instance == null)
@@ -85,14 +84,13 @@ public class SoundManager : MonoBehaviour
     }
 
 
-
-
-    public void Randomizefx(params AudioClip[] clips)
+    public void Randomizefx(params Clip[] clips)
     {
         int randomIndex = Random.Range(0, clips.Length);
         float randomPitch = Random.Range(_lowPitchRange, _highPitchRange);
         fxSource.pitch = randomPitch;
-        fxSource.clip = clips[randomIndex];
+        fxSource.clip = clips[randomIndex].Audio;
+        fxSource.volume = clips[randomIndex].Volume;
         fxSource.Play();
     }
 
