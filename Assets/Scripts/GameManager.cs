@@ -41,6 +41,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         TimeStart = Time.time;
+        Debug.Log(TimeStart);
         _nextHazardTiming = Time.time + HazardDelay + timeForFirstHazard;
         SoundManager.instance.PlayAmbiance(ambiance, .8f);
         SoundManager.instance.PlayLoop(music);
