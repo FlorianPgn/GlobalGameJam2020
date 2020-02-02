@@ -28,8 +28,8 @@ public class RepairUI : MonoBehaviour
     public void Update()
     {
         ShowRepairLevel(_machine.GetRepairLevel());
-        if (!_machine.IsWorking && RepairAction != null) SetRepairAction(_machine.GetActionType());
         CheckPump();
+        if (!_machine.IsWorking && RepairAction != null) SetRepairAction(_machine.GetActionType());
         //
     }
 
