@@ -64,6 +64,7 @@ public class Machine : Selectable
         if (_repairLevel == 1f)
         {
             IsWorking = true;
+            //Heal ship
             Difficulty -= 1;
             if (Difficulty > 0)
             {

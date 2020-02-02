@@ -20,18 +20,19 @@ public class GameManager : MonoBehaviour
     public int timeBetweenSpeedLoss = 3;
 
     public Text timerText;
-    // Start is called before the first frame update
 
     private float _nextHazardTiming;
 
     private List<int> _workingMachines;
 
     private const int SIX_MINUTES = 6 * 60;
+    private const int FOUR_MINUTES = 4 * 60;
     
     void Start()
     {
         _nextHazardTiming = Time.time + HazardDelay;
         InvokeRepeating("findBrokenMachine", 0, timeBetweenSpeedLoss);
+        InvokeRepeating("autoRepair", 0, timeBetweenSpeedLoss * 1.5f);
     }
 
     // Update is called once per frame
@@ -74,8 +75,8 @@ public class GameManager : MonoBehaviour
     private void displayTimer()
     {
         string estimatedTime = "\n" + "Estimated travel time is: ";
-        int estimatedMinutes = (int)totalTimeInSec / 60;
-        int estimatedSeconds = (int)totalTimeInSec % 60;
+        int estimatedMinutes = totalTimeInSec / 60;
+        int estimatedSeconds = totalTimeInSec % 60;
 
         if (estimatedSeconds < 10)
             estimatedTime += estimatedMinutes + ":0" + estimatedSeconds;
@@ -83,7 +84,7 @@ public class GameManager : MonoBehaviour
             estimatedTime += estimatedMinutes + ":" + estimatedSeconds;
 
         if (Time.time < 60)
-            timerText.text = System.Math.Round(Time.time, 2).ToString() + estimatedTime;
+            timerText.text = Math.Round(Time.time, 2).ToString() + estimatedTime;
         else
         {
             int minutes = (int)Time.time / 60;
@@ -111,9 +112,17 @@ public class GameManager : MonoBehaviour
                 if (totalTimeInSec > SIX_MINUTES)
                     totalTimeInSec = SIX_MINUTES;
 
-                if (i > nonWorkingMachines.Length)
+                if (i >= nonWorkingMachines.Length)
                     break;
             }
         }
+    }
+
+    private void autoRepair()
+    {
+        totalTimeInSec -= (int)(totalTimeInSec * (speedLoss / 2));
+
+        if (totalTimeInSec < FOUR_MINUTES)
+            totalTimeInSec = FOUR_MINUTES;
     }
 }
