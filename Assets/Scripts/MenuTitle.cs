@@ -19,19 +19,18 @@ public class MainMenu : MonoBehaviour
         SceneManager.LoadScene("Main");
     }
 
-    public void Tutorial()
+    public void Controls()
     {
         SoundManager.instance.PlayStop();
-        SceneManager.LoadScene("Tutorial");
+        SceneManager.LoadScene("MenuControls");
     }
 
     public void Credits()
     {
-        SoundManager.instance.PlayStop();
-        SceneManager.LoadScene("Credits");
+        SceneManager.LoadScene("MenuCredits");
     }
 
-    public void QuitApp()
+    public void Quit()
     {
         Application.Quit();
     }
