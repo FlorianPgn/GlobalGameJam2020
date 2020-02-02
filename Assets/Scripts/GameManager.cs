@@ -30,7 +30,7 @@ public class GameManager : MonoBehaviour
     
     private List<int> _workingMachines;
 
-    private const int SIX_MINUTES = 6 * 60;
+    private const int TWO_MINUTES = 2 * 60;
     
     void Start()
     {
@@ -133,8 +133,8 @@ public class GameManager : MonoBehaviour
                 totalTimeInSec = (int)(totalTimeInSec * (1 + speedLoss));
                 i++;
 
-                if (totalTimeInSec > SIX_MINUTES)
-                    totalTimeInSec = SIX_MINUTES;
+                if (totalTimeInSec > startingEstimatedTime + TWO_MINUTES)
+                    totalTimeInSec = startingEstimatedTime + TWO_MINUTES;
 
                 if (i >= nonWorkingMachines.Length)
                     break;
