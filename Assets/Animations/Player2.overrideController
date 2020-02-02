@@ -9,12 +9,15 @@ AnimatorOverrideController:
   m_Name: Player2
   m_Controller: {fileID: 9100000, guid: 0c00feb06ae32d843b9a7fe39e974f95, type: 2}
   m_Clips:
-  - m_OriginalClip: {fileID: 7400000, guid: e2145db3e3063894698bc1694f8e7f7d, type: 2}
+  - m_OriginalClip: {fileID: 1827226128182048838, guid: 762af87b043da3042939b3e50ed02c20,
+      type: 3}
     m_OverrideClip: {fileID: 1827226128182048838, guid: 59e9d0ef83701464eb2a61608296f4ad,
       type: 3}
-  - m_OriginalClip: {fileID: 7400000, guid: 5b98634ed8b52ca41b4d955d2a59663d, type: 2}
+  - m_OriginalClip: {fileID: -7552395782175519976, guid: 762af87b043da3042939b3e50ed02c20,
+      type: 3}
     m_OverrideClip: {fileID: -5405653242291790180, guid: 59e9d0ef83701464eb2a61608296f4ad,
       type: 3}
-  - m_OriginalClip: {fileID: 7400000, guid: 7befb59e58f9a9b4e8b64939567e60b0, type: 2}
+  - m_OriginalClip: {fileID: -2324756458606366599, guid: 762af87b043da3042939b3e50ed02c20,
+      type: 3}
     m_OverrideClip: {fileID: -3508530734698821748, guid: 59e9d0ef83701464eb2a61608296f4ad,
       type: 3}
