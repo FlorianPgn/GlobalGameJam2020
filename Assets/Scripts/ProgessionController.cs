@@ -43,7 +43,7 @@ public class ProgessionController : MonoBehaviour
     void Update()
     {
  
-        float t = (Manager.TimeStart + Time.time) / 3f;
+        float t = (Manager.TimeStart + Time.time) / Manager.totalTimeInSec;
         //Debug.Log(t);
         Zeppelin.transform.position = Vector3.Lerp(StartPos, StartPos + DifferencePos, t);
         if (t > 0.6f && !_musicPlayed)
