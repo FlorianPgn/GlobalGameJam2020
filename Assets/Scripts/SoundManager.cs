@@ -32,14 +32,15 @@ public class SoundManager : MonoBehaviour
 
     public void MusicTransition(AudioClip input, AudioClip output)
     {
-        musicSource.clip = input;
+        if(input != null)
+            musicSource.clip = input;
         musicSource2.clip = output;
 
         if (musicSource.isPlaying)
         {
             musicSource2.volume = 0;
             musicSource2.Play();
-           StartCoroutine(MusicCrossFade(.5f, reverse));
+            StartCoroutine(MusicCrossFade(2f, reverse));
             musicSource.Stop();
         }
         else
@@ -50,7 +51,7 @@ public class SoundManager : MonoBehaviour
             musicSource2.Stop();
         }
     }
-
+    
     public void PlaySingle(AudioClip clip, float volume)
     {
         fxSource.volume = volume;
@@ -157,10 +158,9 @@ public class SoundManager : MonoBehaviour
             {
                 musicSource.volume -= Time.deltaTime * 1 / duration;
                 musicSource2.volume += Time.deltaTime * 1 / duration;
-
+                Debug.Log("LOL");
                 yield return null;
-            }         
-            
+            }
     }
 
     private IEnumerator MusicCrossFadeReverse(float duration, bool reverse)

@@ -17,8 +17,12 @@ public class ProgessionController : MonoBehaviour
     public float TripDuration = 30f;
     public GameObject Size;
     public GameManager Manager;
-    
+    public Transform End;
     private float _endTime;
+
+    public AudioClip clip;
+
+    private bool _musicPlayed;
     
     // Start is called before the first frame update
     void Start()
@@ -29,18 +33,23 @@ public class ProgessionController : MonoBehaviour
         float barHeight = Size.GetComponent<RectTransform>().rect.height;
         Debug.Log(barPos);
         Debug.Log(barWidth/ 2);
-        StartPos = new Vector3(barPos.x - barWidth / 2, ProgressionBar.GetComponent<RectTransform>().rect.height * 0.80f, 0);
-        EndPos = new Vector3(barPos.x + barWidth / 2, ProgressionBar.GetComponent<RectTransform>().rect.height * 0.80f,0);
+        StartPos = Zeppelin.transform.position;
+        EndPos = StartPos + Vector3.right * barWidth;
+        EndPos = End.position;
         DifferencePos = EndPos - StartPos;
     }
 
     // Update is called once per frame
     void Update()
     {
-        Timer += Time.deltaTime;
  
-        float t = (Manager.TimeStart + Time.time) / Manager.totalTimeInSec;
-        
-        Zeppelin.transform.position = StartPos + DifferencePos * t;
+        float t = (Manager.TimeStart + Time.time) / 3f;
+        //Debug.Log(t);
+        Zeppelin.transform.position = Vector3.Lerp(StartPos, StartPos + DifferencePos, t);
+        if (t > 0.6f && !_musicPlayed)
+        {
+            SoundManager.instance.MusicTransition(null, clip);
+            _musicPlayed = true;
+        }
     }
 }
