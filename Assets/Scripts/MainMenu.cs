@@ -16,7 +16,7 @@ public class MainMenu : MonoBehaviour
     public void Play()
     {
         SoundManager.instance.PlayStop();
-        SceneManager.LoadScene("PlayerCharac");
+        SceneManager.LoadScene("Main");
     }
 
     public void Tutorial()
