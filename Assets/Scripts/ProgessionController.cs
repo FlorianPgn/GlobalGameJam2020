@@ -9,6 +9,7 @@ public class ProgessionController : MonoBehaviour
 {
 
     public Image Zeppelin;
+    public Image ProgressionBar;
     public Vector3 StartPos;
     public Vector3 DifferencePos;
     public Vector3 EndPos;
@@ -22,9 +23,14 @@ public class ProgessionController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        StartPos = Zeppelin.transform.position;
-        Debug.Log(Size.GetComponent<RectTransform>().rect.width);
-        EndPos = new Vector3(Size.GetComponent<RectTransform>().rect.width - Zeppelin.GetComponent<RectTransform>().rect.width, Zeppelin.transform.position.y, Zeppelin.transform.position.z);
+        
+        Vector3 barPos = Size.transform.position;
+        float barWidth = Size.GetComponent<RectTransform>().rect.width;
+        float barHeight = Size.GetComponent<RectTransform>().rect.height;
+        Debug.Log(barPos);
+        Debug.Log(barWidth/ 2);
+        StartPos = new Vector3(barPos.x - barWidth / 2, ProgressionBar.GetComponent<RectTransform>().rect.height * 0.80f, 0);
+        EndPos = new Vector3(barPos.x + barWidth / 2, ProgressionBar.GetComponent<RectTransform>().rect.height * 0.80f,0);
         DifferencePos = EndPos - StartPos;
     }
 
