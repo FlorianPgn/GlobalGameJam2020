@@ -7,10 +7,12 @@ public class SoundManager : MonoBehaviour
     public static SoundManager instance = null;
     public AudioSource fxSource;
     public AudioSource musicSource;
+    public AudioSource musicSource2;
 
     private float _volume = 1f;
     private float _lowPitchRange = .95f;
     private float _highPitchRange = 1.85f;
+    private bool reverse;
 
 
 
@@ -28,6 +30,27 @@ public class SoundManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
+    public void MusicTransition(AudioClip input, AudioClip output)
+    {
+        musicSource.clip = input;
+        musicSource2.clip = output;
+
+        if (musicSource.isPlaying)
+        {
+            musicSource2.volume = 0;
+            musicSource2.Play();
+           StartCoroutine(MusicCrossFade(.5f, reverse));
+            musicSource.Stop();
+        }
+        else
+        {
+            musicSource.volume = 0;
+            musicSource.Play();
+            StartCoroutine(MusicCrossFadeReverse(1f, reverse));
+            musicSource2.Stop();
+        }
+    }
+
     public void PlaySingle(AudioClip clip)
     {
 
@@ -36,34 +59,23 @@ public class SoundManager : MonoBehaviour
 
     }
 
-    public void PlayMainTheme(AudioClip clip, float fadeDuration)
+    public bool MusicIsPlaying()
     {
-        musicSource.clip = clip;
-        musicSource.loop = true;
-        musicSource.Play();
-        //StartCoroutine(AnimatedMusicCrossFade(fadeDuration));
+        if (musicSource.isPlaying)
+        {
+            return true;
+        }
+        return false;
     }
 
-    public void PlayPauseTheme(AudioClip clip)
-    {
-        musicSource.clip = clip;
-        musicSource.loop = true;
-        musicSource.Play();
-    }
-
-    public void PlayEndTheme(AudioClip clip)
+    public void PlayLoop(AudioClip clip)
     {
         musicSource.clip = clip;
         musicSource.loop = true;
         musicSource.Play();
     }
 
-    public void PlayPanicTheme(AudioClip clip)
-    {
-        musicSource.clip = clip;
-        musicSource.loop = true;
-        musicSource.Play();
-    }
+
 
 
     public void Randomizefx(params AudioClip[] clips)
@@ -75,6 +87,18 @@ public class SoundManager : MonoBehaviour
         fxSource.Play();
     }
 
+    public void SetVolume(float volumePercent)
+    {
+        _volume = volumePercent;
+        musicSource.volume = volumePercent;
+        PlayerPrefs.SetFloat("volume", volumePercent);
+        PlayerPrefs.Save();
+    }
+
+    public float GetVolume()
+    {
+        return _volume;
+    }
 
     public void PlayPause()
     {
@@ -98,10 +122,38 @@ public class SoundManager : MonoBehaviour
         {
             percent += Time.deltaTime * 1 / duration;
             musicSource.volume = Mathf.Lerp(0, _volume, percent);
-            musicSource.volume = Mathf.Lerp(_volume, 0, percent);
+            musicSource2.volume = Mathf.Lerp(_volume, 0, percent);
             yield return null;
         }
     }
 
+    private IEnumerator MusicCrossFade(float duration, bool reverse)
+    {       
+            while (musicSource.volume > 0 && musicSource2.volume <= .75f)
+            {
+                musicSource.volume -= Time.deltaTime * 1 / duration;
+                musicSource2.volume += Time.deltaTime * 1 / duration;
+
+                yield return null;
+            }         
+            
+    }
+
+    private IEnumerator MusicCrossFadeReverse(float duration, bool reverse)
+    {
+        while (musicSource2.volume > 0 && musicSource.volume <= .75f)
+        {
+            musicSource2.volume -= Time.deltaTime * 1 / duration;
+            musicSource.volume += Time.deltaTime * 2 / duration;
+
+            yield return null;
+        }
+
+    }
+
+
 
 }
+
+
+

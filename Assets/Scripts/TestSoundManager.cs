@@ -9,7 +9,7 @@ public class TestSoundManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        SoundManager.instance.PlayMainTheme(music, 1f);
+        SoundManager.instance.PlayLoop(music);
     }
 
     // Update is called once per frame

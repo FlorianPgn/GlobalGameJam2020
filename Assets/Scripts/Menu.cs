@@ -31,10 +31,10 @@ public class Menu : MonoBehaviour
         {
             resolutionToggles[i].isOn = i == _activeResIndex;
         }
-        volume.value = AudioManager.Instance.GetVolume();
+        volume.value = SoundManager.instance.GetVolume();
         fullscreenToggle.isOn = isFullscreen;
         SetFullScreen(isFullscreen);
-        MusicManager.Instance.PlayMenuTheme();
+        
     }
 
     public void Play()
@@ -88,7 +88,7 @@ public class Menu : MonoBehaviour
 
     public void Volume(float value)
     {
-        AudioManager.Instance.SetVolume(value);
+        SoundManager.instance.SetVolume(value);
     }
 
     public void Back()
