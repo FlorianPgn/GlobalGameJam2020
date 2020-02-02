@@ -13,6 +13,9 @@ public class Machine : Selectable
 
     public bool IsWorking = true;
     public int Difficulty = 1;
+
+    public Clip BreakClip;
+    public Clip RepairClip;
     
     public MeshRenderer MeshRenderer;
     private Color _baseColor;
@@ -61,7 +64,14 @@ public class Machine : Selectable
         _actionType = PossibleActions[Random.Range(0, PossibleActions.Length)];
         _repairLevel = 0f;
         IsWorking = false;
-        SoundManager.instance.Randomizefx(SoundEffect.Instance.GetTypeSounds(SoundEffect.Type.BREAK));
+        if (BreakClip.Audio == null)
+        {
+            SoundManager.instance.Randomizefx(SoundEffect.Instance.GetTypeSounds(SoundEffect.Type.BREAK));
+        }
+        else
+        {
+            SoundManager.instance.PlaySingle(BreakClip.Audio, BreakClip.Volume);
+        }
     }
 
     private void Repair(float value)
@@ -72,6 +82,7 @@ public class Machine : Selectable
         if (_repairLevel == 1f)
         {
             IsWorking = true;
+            //Heal ship
             Difficulty -= 1;
             if (Difficulty > 0)
             {
@@ -87,7 +98,14 @@ public class Machine : Selectable
 
     private void ResetMachine()
     {
-        SoundManager.instance.Randomizefx(SoundEffect.Instance.GetTypeSounds(SoundEffect.Type.SUCCESS));
+        if (RepairClip.Audio == null)
+        {
+            SoundManager.instance.Randomizefx(SoundEffect.Instance.GetTypeSounds(SoundEffect.Type.SUCCESS));
+        }
+        else
+        {
+            SoundManager.instance.PlaySingle(RepairClip.Audio, RepairClip.Volume);
+        }
     }
     
     public override bool ReceiveInput(ActionType type)
