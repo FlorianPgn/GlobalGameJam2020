@@ -7,13 +7,14 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-
     public Machine[] Machines;
     [Range(0f, 10f)]
     public float HazardDelay = 3f;
     public int silmutanousHazards;
     public AnimationCurve difficultyCurve;
     public int totalTimeInSec;
+    [Range(0f, 0.50f)]
+    public float speedLoss = .20f;
 
     public Text timerText;
     // Start is called before the first frame update
@@ -66,19 +67,26 @@ public class GameManager : MonoBehaviour
 
     private void displayTimer()
     {
-        //float timerCountdown = totalTimeInSec - Time.time;
+        string estimatedTime = "\n" + "Estimated travel time is: ";
+        int estimatedMinutes = (int)totalTimeInSec / 60;
+        int estimatedSeconds = (int)totalTimeInSec % 60;
+
+        if (estimatedSeconds < 10)
+            estimatedTime += estimatedMinutes + ":0" + estimatedSeconds;
+        else
+            estimatedTime += estimatedMinutes + ":" + estimatedSeconds;
 
         if (Time.time < 60)
-            timerText.text = System.Math.Round(Time.time, 2).ToString();
+            timerText.text = System.Math.Round(Time.time, 2).ToString() + estimatedTime;
         else
         {
             int minutes = (int)Time.time / 60;
             int seconds = (int)Time.time % 60;
 
             if (seconds < 10)
-                timerText.text = minutes + " : 0" + seconds;
+                timerText.text = minutes + ":0" + seconds + estimatedTime;
             else
-                timerText.text = minutes + " : " + seconds;
+                timerText.text = minutes + ":" + seconds + estimatedTime;
         }
     }
 }
