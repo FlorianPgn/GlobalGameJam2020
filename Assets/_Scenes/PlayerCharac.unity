@@ -2687,6 +2687,12 @@ MonoBehaviour:
   PossibleActions: 000000000100000002000000030000000400000005000000
   IsWorking: 1
   Difficulty: 1
+  BreakClip:
+    Audio: {fileID: 0}
+    Volume: 0
+  RepairClip:
+    Audio: {fileID: 0}
+    Volume: 0
   MeshRenderer: {fileID: 1807092217}
   MachineAnimator: {fileID: 0}
 --- !u!136 &331870717
@@ -2758,6 +2764,12 @@ MonoBehaviour:
   PossibleActions: 06000000070000000100000003000000
   IsWorking: 1
   Difficulty: 1
+  BreakClip:
+    Audio: {fileID: 0}
+    Volume: 0
+  RepairClip:
+    Audio: {fileID: 0}
+    Volume: 0
   MeshRenderer: {fileID: 1415011569}
   MachineAnimator: {fileID: 0}
 --- !u!114 &338088316
@@ -3285,6 +3297,12 @@ MonoBehaviour:
   PossibleActions: 06000000070000000400000005000000
   IsWorking: 1
   Difficulty: 1
+  BreakClip:
+    Audio: {fileID: 0}
+    Volume: 0
+  RepairClip:
+    Audio: {fileID: 0}
+    Volume: 0
   MeshRenderer: {fileID: 423416884}
   MachineAnimator: {fileID: 937703832}
 --- !u!114 &423416882
@@ -3727,6 +3745,12 @@ MonoBehaviour:
   PossibleActions: 040000000500000000000000
   IsWorking: 1
   Difficulty: 1
+  BreakClip:
+    Audio: {fileID: 0}
+    Volume: 0
+  RepairClip:
+    Audio: {fileID: 0}
+    Volume: 0
   MeshRenderer: {fileID: 477990509}
   MachineAnimator: {fileID: 0}
 --- !u!65 &477990508
@@ -5561,6 +5585,12 @@ MonoBehaviour:
   PossibleActions: 060000000700000002000000
   IsWorking: 1
   Difficulty: 1
+  BreakClip:
+    Audio: {fileID: 0}
+    Volume: 0
+  RepairClip:
+    Audio: {fileID: 0}
+    Volume: 0
   MeshRenderer: {fileID: 879287663}
   MachineAnimator: {fileID: 0}
 --- !u!114 &804127394
@@ -8119,6 +8149,12 @@ MonoBehaviour:
   PossibleActions: 0000000001000000020000000300000004000000050000000600000007000000
   IsWorking: 1
   Difficulty: 1
+  BreakClip:
+    Audio: {fileID: 0}
+    Volume: 0
+  RepairClip:
+    Audio: {fileID: 0}
+    Volume: 0
   MeshRenderer: {fileID: 1256014307}
   MachineAnimator: {fileID: 0}
 --- !u!114 &1256014305
@@ -9685,6 +9721,12 @@ MonoBehaviour:
   PossibleActions: 020000000300000004000000
   IsWorking: 1
   Difficulty: 1
+  BreakClip:
+    Audio: {fileID: 0}
+    Volume: 0
+  RepairClip:
+    Audio: {fileID: 0}
+    Volume: 0
   MeshRenderer: {fileID: 1387955318}
   MachineAnimator: {fileID: 0}
 --- !u!65 &1387955322
@@ -11758,8 +11800,8 @@ MonoBehaviour:
   - {fileID: 477990507}
   music: {fileID: 8300000, guid: 1839cf4a8415c274f97d681f2d5aef23, type: 3}
   ambiance: {fileID: 8300000, guid: 28ef577117d0df848b266f1af79ed269, type: 3}
-  HazardDelay: 3
-  silmutanousHazards: 1
+  HazardDelay: 8
+  silmutanousHazards: 2
   difficultyCurve:
     serializedVersion: 2
     m_Curve:
@@ -11774,7 +11816,7 @@ MonoBehaviour:
       outWeight: 0
     - serializedVersion: 3
       time: 1
-      value: 3
+      value: 1
       inSlope: 2
       outSlope: 2
       tangentMode: 0
@@ -11784,8 +11826,10 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  totalTimeInSec: 240
-  speedLoss: 0.2
+  totalTimeInSec: 120
+  speedLoss: 0.025
+  timeBetweenSpeedLoss: 8
+  timeForFirstHazard: 0
   timerText: {fileID: 1153509067}
 --- !u!4 &1740324417
 Transform:
@@ -11822,6 +11866,9 @@ MonoBehaviour:
   LaboLight:
   - {fileID: 29798735172607512}
   - {fileID: 29798735713260978}
+  MachinesImages: []
+  BathroomImages: []
+  LaboImages: []
   LightsBugProba: 0.05
 --- !u!114 &1740324419
 MonoBehaviour:
@@ -12727,6 +12774,12 @@ MonoBehaviour:
   PossibleActions: 00000000010000000200000003000000
   IsWorking: 1
   Difficulty: 1
+  BreakClip:
+    Audio: {fileID: 0}
+    Volume: 0
+  RepairClip:
+    Audio: {fileID: 0}
+    Volume: 0
   MeshRenderer: {fileID: 1852080589}
   MachineAnimator: {fileID: 0}
 --- !u!114 &1852080587

@@ -6,17 +6,23 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/_Scenes/Menu.unity
+    path: Assets/_Scenes/MenuTitle.unity
     guid: 59244e38e5032ac44b5a04593bb4d45b
-  - enabled: 1
-    path: Assets/_Scenes/Controls.unity
-    guid: b038421669f3f7e4eab21036be3d24c3
-  - enabled: 1
-    path: Assets/_Scenes/Credits.unity
-    guid: 3d966781b1663204ba917dfa30253cf3
   - enabled: 1
     path: Assets/_Scenes/Main.unity
     guid: 8202e70537b65ef4ba23fb2642ff4565
+  - enabled: 1
+    path: Assets/_Scenes/MenuStory.unity
+    guid: d7139260ada6153418a59b14b9ca165f
+  - enabled: 1
+    path: Assets/_Scenes/MenuControls.unity
+    guid: 23e8ebdf74cee9445abb9e3fbf4580db
+  - enabled: 1
+    path: Assets/_Scenes/MenuCredits.unity
+    guid: b038421669f3f7e4eab21036be3d24c3
+  - enabled: 0
+    path: Assets/_Scenes/MenuCredits.unity
+    guid: 3d966781b1663204ba917dfa30253cf3
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: abd352378a5e10944880056c71571d4d,
       type: 2}

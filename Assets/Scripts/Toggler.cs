@@ -8,10 +8,15 @@ public class Toggler : Selectable
     
     private Animator _animator;
     private bool _toggled;
-    
+    public Color SelectColor; 
+    private MeshRenderer _meshRenderer;
+    private Color _base;
     private void Start()
     {
-        _animator = GetComponent<Animator>();
+        _animator = GetComponentInChildren<Animator>();
+        _meshRenderer = GetComponent<MeshRenderer>();
+        _base = _meshRenderer.material.color;
+
     }
     
     public override bool ReceiveInput(ActionType type)
@@ -29,11 +34,11 @@ public class Toggler : Selectable
 
     protected override void OnSelect()
     {
-        
+        _meshRenderer.material.color = SelectColor;
     }
 
     protected override void OnUnselect()
     {
-        
+        _meshRenderer.material.color = _base;
     }
 }
