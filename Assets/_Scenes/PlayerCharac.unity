@@ -2753,7 +2753,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9533672eb3fa42e4baae201ddf330064, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Types: 02000000
+  Types: 01000000
   SelectColor: {r: 0.509434, g: 0.509434, b: 0.509434, a: 1}
   PossibleActions: 06000000070000000100000003000000
   IsWorking: 1
@@ -3280,7 +3280,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9533672eb3fa42e4baae201ddf330064, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Types: 02000000
+  Types: 0200000001000000
   SelectColor: {r: 0.509434, g: 0.509434, b: 0.509434, a: 1}
   PossibleActions: 06000000070000000400000005000000
   IsWorking: 1
@@ -3722,7 +3722,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9533672eb3fa42e4baae201ddf330064, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Types: 02000000
+  Types: 00000000
   SelectColor: {r: 0.509434, g: 0.509434, b: 0.509434, a: 1}
   PossibleActions: 040000000500000000000000
   IsWorking: 1
@@ -3821,7 +3821,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -5672,7 +5672,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -8114,7 +8114,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9533672eb3fa42e4baae201ddf330064, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Types: 02000000
+  Types: 00000000
   SelectColor: {r: 0.509434, g: 0.509434, b: 0.509434, a: 1}
   PossibleActions: 0000000001000000020000000300000004000000050000000600000007000000
   IsWorking: 1
@@ -8712,7 +8712,18 @@ MonoBehaviour:
   m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1322589857
 GameObject:
   m_ObjectHideFlags: 0
@@ -9669,7 +9680,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9533672eb3fa42e4baae201ddf330064, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Types: 02000000
+  Types: 0200000001000000
   SelectColor: {r: 0.509434, g: 0.509434, b: 0.509434, a: 1}
   PossibleActions: 020000000300000004000000
   IsWorking: 1
@@ -12711,7 +12722,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9533672eb3fa42e4baae201ddf330064, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Types: 02000000
+  Types: 01000000
   SelectColor: {r: 0.509434, g: 0.509434, b: 0.509434, a: 1}
   PossibleActions: 00000000010000000200000003000000
   IsWorking: 1
@@ -15092,7 +15103,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2136866539
 RectTransform:
   m_ObjectHideFlags: 0
