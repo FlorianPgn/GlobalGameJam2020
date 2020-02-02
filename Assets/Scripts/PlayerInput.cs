@@ -54,12 +54,12 @@ public class PlayerInput : MonoBehaviour
             _interaction.OnY();
             Debug.Log("Y");
         }
-        if (Input.GetAxisRaw("L"+Id) > 0.9)
+        if (Input.GetAxisRaw("L"+Id) > 0.9 && Input.GetAxisRaw("R"+Id) < 0.2)
         {
             _interaction.OnL();
             Debug.Log("L");
         }
-        if (Input.GetAxisRaw("R"+Id) > 0.8)
+        if (Input.GetAxisRaw("R"+Id) > 0.9 && Input.GetAxisRaw("L"+Id) < 0.2)
         {
             _interaction.OnR();
             Debug.Log("R");
