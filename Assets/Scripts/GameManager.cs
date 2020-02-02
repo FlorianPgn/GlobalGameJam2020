@@ -20,6 +20,8 @@ public class GameManager : MonoBehaviour
     public float speedLoss = .20f;
     [Range(0, 10)]
     public int timeBetweenSpeedLoss = 3;
+    [Range(0, 5)]
+    public int timeForFirstHazard;
 
     public Text timerText;
 
@@ -40,6 +42,10 @@ public class GameManager : MonoBehaviour
         InvokeRepeating("findBrokenMachine", 0, timeBetweenSpeedLoss);
         InvokeRepeating("autoRepair", 0, timeBetweenSpeedLoss * 1.5f);
 
+        for (int i = 0; i < silmutanousHazards; i++)
+        {
+            StartCoroutine("triggerFirstHazard", timeForFirstHazard);
+        }
     }
 
     // Update is called once per frame
@@ -55,8 +61,14 @@ public class GameManager : MonoBehaviour
                 BreakMachine();
             }
         }
-        
+
         displayTimer();
+    }
+
+    private IEnumerator triggerFirstHazard(int timeForFirstHazard)
+    {
+        yield return new WaitForSeconds(timeForFirstHazard);
+        BreakMachine();
     }
 
     private void BreakMachine()
