@@ -74,7 +74,7 @@ public class Machine : Selectable
     {
             
     }
-
+    
     public override bool ReceiveInput(ActionType type)
     {
         throw new NotImplementedException();
