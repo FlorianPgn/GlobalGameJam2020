@@ -114,7 +114,7 @@ public class Machine : Selectable
     
     public override bool ReceiveInput(ActionType type, float value)
     {
-        if (!IsWorking)
+        if (!IsWorking && type == _actionType)
         {
             if (type == ActionType.L && !_pumpedLeft)
             {
@@ -133,8 +133,7 @@ public class Machine : Selectable
                 Repair(value / 2f);
                 return true;
             }
-        
-            if (type == _actionType)
+            else
             {
                 Repair(value);
                 return true;
