@@ -28,7 +28,7 @@ public class PlayerInteraction : MonoBehaviour
     {
         if (SelectedObject != null)
         {
-            if (SelectedObject.ReceiveInput(type, RepairStrength * (_power/10f)))
+            if (SelectedObject.ReceiveInput(type, RepairStrength * (_power/2f)))
             {
                 Debug.Log(RepairStrength +" "+ _power);
                 Power -= RepairStrength;
