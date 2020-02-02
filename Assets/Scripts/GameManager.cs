@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour
     public float speedLoss = .20f;
     [Range(0, 10)]
     public int timeBetweenSpeedLoss = 3;
-    [Range(0, 5)]
+    [Range(0, 30)]
     public int timeForFirstHazard;
     public float medecineCreationTime;
 
@@ -32,11 +32,14 @@ public class GameManager : MonoBehaviour
     
     private List<int> _workingMachines;
 
+
+    public float TimeStart;
     private const int TWO_MINUTES = 2 * 60;
     
     void Start()
     {
-        _nextHazardTiming = Time.time + HazardDelay;
+        TimeStart = Time.time;
+        _nextHazardTiming = Time.time + HazardDelay + timeForFirstHazard;
         SoundManager.instance.PlayAmbiance(ambiance, .8f);
         SoundManager.instance.PlayLoop(music);
         nbMedecine = 0;

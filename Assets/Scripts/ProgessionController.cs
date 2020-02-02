@@ -16,7 +16,7 @@ public class ProgessionController : MonoBehaviour
     public float Timer;
     public float TripDuration = 30f;
     public GameObject Size;
-    
+    public GameManager Manager;
     
     private float _endTime;
     
@@ -38,10 +38,9 @@ public class ProgessionController : MonoBehaviour
     void Update()
     {
         Timer += Time.deltaTime;
-        if (Timer <= TripDuration)
-        {
-            Timer += Time.deltaTime;    
-            Zeppelin.transform.position = StartPos + DifferencePos * (Timer / TripDuration);
-        }
+ 
+        float t = (Manager.TimeStart + Time.time) / Manager.totalTimeInSec;
+        
+        Zeppelin.transform.position = StartPos + DifferencePos * t;
     }
 }

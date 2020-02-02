@@ -1,8 +1,10 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SocialPlatforms;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 public class LightsController : Toggled
 {
@@ -20,12 +22,19 @@ public class LightsController : Toggled
     public float LightsBugProba = 0.1f;
 
     private bool _lightBugHappening = false;
+
+    public GameObject LightAlarm;
     
     // Start is called before the first frame update
     void Start()
     {
         StartCoroutine(BugLoop());
         
+    }
+
+    private void Update()
+    {
+        LightAlarm.SetActive(_lightBugHappening);
     }
 
     private IEnumerator BugLoop()
