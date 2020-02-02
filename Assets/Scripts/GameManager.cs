@@ -5,6 +5,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.SocialPlatforms;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -104,8 +105,18 @@ public class GameManager : MonoBehaviour
         int estimatedMinutes = totalTimeInSec / 60;
         int estimatedSeconds = totalTimeInSec % 60;
 
-        if (Time.time >= totalTimeInSec)
-            timerText.text = "Game over"; //Ajouter la méchanique de game over ici.
+        if (Time.time >= startingEstimatedTime && totalTimeInSec <= (startingEstimatedTime + TWO_MINUTES) / 2)
+        {
+            SceneManager.LoadScene("MenuEnd1");
+        }
+        else if (Time.time >= totalTimeInSec && totalTimeInSec >= (startingEstimatedTime + TWO_MINUTES) / 2)
+        {
+            String[] badEndings = { "MenuEnd2", "MenuEnd2" };
+
+            int randomBadEnding = UnityEngine.Random.Range(0, 1);
+
+            SceneManager.LoadScene(badEndings[randomBadEnding]);
+        }
         else
         {
             if (estimatedSeconds < 10)
@@ -146,6 +157,9 @@ public class GameManager : MonoBehaviour
                 if (i >= nonWorkingMachines.Length)
                     break;
             }
+
+            if (totalTimeInSec >= startingEstimatedTime + TWO_MINUTES)
+                totalTimeInSec = startingEstimatedTime + TWO_MINUTES;
         }
     }
 
